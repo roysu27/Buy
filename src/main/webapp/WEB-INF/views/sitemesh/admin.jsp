@@ -6,7 +6,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Buy</title>
+    <title>Buy 管理後台</title>
 
     <link href="/resources/bootstrap/bootstrap.css" rel="stylesheet">
     <link href="/resources/css/sitemesh/basic.css" rel="stylesheet">
@@ -23,13 +23,12 @@
             <div class="span3">
                 <div class="well sidebar-nav">
                     <ul class="nav nav-list">
+                        <li class="nav-header">商品管理</li>
+                        <li><a href="#">新增父類別</a></li>
+                        <li><a href="#">新增子類別</a></li>
+                        <li><a href="#">新增商品</a></li>
                         <li class="nav-header">Sidebar</li>
                         <li class="active"><a href="#">Link</a></li>
-                        <li><a href="#">Link</a></li>
-                        <li><a href="#">Link</a></li>
-                        <li><a href="#">Link</a></li>
-                        <li class="nav-header">Sidebar</li>
-                        <li><a href="#">Link</a></li>
                         <li><a href="#">Link</a></li>
                         <li><a href="#">Link</a></li>
                         <li><a href="#">Link</a></li>
