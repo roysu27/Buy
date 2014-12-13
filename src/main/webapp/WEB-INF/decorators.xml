@@ -6,4 +6,7 @@
 	<decorator name="admin" page="admin.jsp">
 		<pattern>/Admin/*</pattern>
 	</decorator>
+	<decorator name="form" page="form.jsp">
+		<pattern>/Register/*</pattern>
+	</decorator>
 </decorators>

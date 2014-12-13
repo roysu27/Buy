@@ -15,6 +15,7 @@
                 </p>
                 <ul class="nav">
                     <li class="active"><a href="/">Home</a></li>
+                    <li><a href="/Register/Form">註冊</a></li>
                     <li><a href="/Admin/Home">管理後台</a></li>
                     <li><a href="#about">About</a></li>
                     <li><a href="#contact">Contact</a></li>
