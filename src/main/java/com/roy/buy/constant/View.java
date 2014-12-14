@@ -13,5 +13,14 @@ public class View {
 	
 	/** 註冊表單 */
 	public static final String REGISTER_FORM = "register/form";
+	
+	/** 建立父類別頁面 */
+	public static final String ADMIN_CREATE_PARENT_CATEGORY = "admin/createParentCategory";
+	
+	/** 建立子類別頁面 */
+	public static final String ADMIN_CREATE_CHILD_CATEGORY = "admin/createChildCategory";
+	
+	/** 建立商品頁面 */
+	public static final String ADMIN_CREATE_PRODUCT = "admin/createProduct";
 
 }
