@@ -14,6 +14,9 @@ public class View {
 	/** 註冊表單 */
 	public static final String REGISTER_FORM = "register/form";
 	
+	/** 註冊成功頁面 */
+	public static final String REGISTER_SUCCESS = "register/success";
+	
 	/** 建立父類別頁面 */
 	public static final String ADMIN_CREATE_PARENT_CATEGORY = "admin/createParentCategory";
 	
