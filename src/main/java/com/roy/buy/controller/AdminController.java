@@ -1,9 +1,12 @@
 package com.roy.buy.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.roy.buy.constant.View;
+import com.roy.buy.entity.Category;
+import com.roy.buy.service.ICategoryService;
 
 /**
  * 管理後台Controller
@@ -11,6 +14,12 @@ import com.roy.buy.constant.View;
 @Controller
 @RequestMapping("/Admin")
 public class AdminController {
+	
+	/**
+	 * 自動注入CategoryService
+	 */
+	@Autowired
+	private ICategoryService categoryService;
 	
 	/**
 	 * 管理後台首頁
@@ -26,6 +35,15 @@ public class AdminController {
 	@RequestMapping(value = "CreateParentCategory")
 	public String createParentCategory() {
 		return View.ADMIN_CREATE_PARENT_CATEGORY;
+	}
+	
+	/**
+	 * 建立父類別
+	 */
+	@RequestMapping(value = "SaveParentCategory")
+	public String saveParentCategory(String categoryName) {
+		categoryService.createCategory(new Category(categoryName, 0));
+		return View.ADMIN_HOME;
 	}
 	
 	/**
