@@ -3,6 +3,10 @@ package com.roy.buy.form;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.codec.digest.DigestUtils;
+
+import com.roy.buy.entity.User;
+
 /**
  * 註冊Form
  */
@@ -59,6 +63,18 @@ public class RegisterForm {
 	 */
 	public List<String> getErrorMessage() {
 		return errorMessage;
+	}
+	
+	/**
+	 * 將RegisterForm轉為User
+	 */
+	public User toUser() {
+		User user = new User();
+		user.setAccount(account);
+		user.setPassword(DigestUtils.md5Hex(password));
+		user.setName(name);
+		user.setEmail(email);
+		return user;
 	}
 
 	public String getAccount() {
