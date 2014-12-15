@@ -2,6 +2,7 @@ package com.roy.buy.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.roy.buy.constant.View;
@@ -50,8 +51,18 @@ public class AdminController {
 	 * 建立子類別頁面
 	 */
 	@RequestMapping(value = "CreateChildCategory")
-	public String createChildCategory() {
+	public String createChildCategory(Model model) {
+		model.addAttribute("parentCategoryList", categoryService.getParentCategoryList());
 		return View.ADMIN_CREATE_CHILD_CATEGORY;
+	}
+	
+	/**
+	 * 建立子類別
+	 */
+	@RequestMapping(value = "SaveChildCategory")
+	public String saveChildCategory(int parentCategory, String categoryName) {
+		categoryService.createCategory(new Category(categoryName, parentCategory));
+		return View.ADMIN_HOME;
 	}
 	
 	/**
