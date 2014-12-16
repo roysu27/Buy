@@ -1,5 +1,6 @@
 package com.roy.buy.service.impl;
 
+import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,6 +31,22 @@ public class UserService implements IUserService {
 			throw new DataCheckException(2);
 		}
 		userDao.save(user);
+	}
+
+	@Override
+	public User login(String account, String password)
+			throws DataCheckException {
+		// 驗證帳號是否正確
+		User user = userDao.findByAccount(account);
+		if(user == null) {
+			throw new DataCheckException(11);
+		}
+		// 驗證密碼是否正確
+		String md5Password = DigestUtils.md5Hex(password);
+		if(!user.getPassword().equals(md5Password)) {
+			throw new DataCheckException(12);
+		}
+		return user;
 	}
 	
 }

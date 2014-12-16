@@ -8,5 +8,7 @@
 	</decorator>
 	<decorator name="form" page="form.jsp">
 		<pattern>/Register/*</pattern>
+		<pattern>/Login</pattern>
+		<pattern>/Login/Form</pattern>
 	</decorator>
 </decorators>

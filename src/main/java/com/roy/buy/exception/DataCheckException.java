@@ -31,6 +31,12 @@ public class DataCheckException extends Exception {
 			case 2:
 				message = "這Email被別人註冊囉，請您更換一個Email。";
 				break;
+			case 11:
+				message = "查無此帳號，請確認後再次輸入。";
+				break;
+			case 12:
+				message = "密碼錯誤，請確認後再次輸入。";
+				break;
 			default:
 				message = "資料驗證錯誤。";
 				break;

@@ -26,4 +26,10 @@ public class View {
 	/** 建立商品頁面 */
 	public static final String ADMIN_CREATE_PRODUCT = "admin/createProduct";
 
+	/** 登入表單 */
+	public static final String LOGIN_FORM = "login/form";
+
+	/** 登入成功頁面 */
+	public static final String LOGIN_SUCCESS = "login/success";
+
 }

@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <div class="navbar navbar-inverse navbar-fixed-top">
     <div class="navbar-inner">
         <div class="container-fluid">
@@ -11,7 +13,15 @@
             <a class="brand" href="/">Buy</a>
             <div class="nav-collapse collapse">
                 <p class="navbar-text pull-right">
-                    Logged in as <a href="#" class="navbar-link">Username</a>
+                	<c:choose>
+                		<c:when test="${sessionScope.validUser != null}">
+                			歡迎你，${sessionScope.validUser.name}。
+                    		<a href="/User/Logout" class="navbar-link">登出</a>
+                		</c:when>
+                		<c:otherwise>
+                    		<a href="/Login/Form" class="navbar-link">登入</a>
+                		</c:otherwise>
+                	</c:choose>
                 </p>
                 <ul class="nav">
                     <li class="active"><a href="/">Home</a></li>
