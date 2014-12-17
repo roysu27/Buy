@@ -28,4 +28,9 @@ public class CategoryService implements ICategoryService {
 		return categoryDao.findByParent(0);
 	}
 
+	@Override
+	public List<Category> getChildCategoryList(int parent) {
+		return categoryDao.findByParent(parent);
+	}
+
 }

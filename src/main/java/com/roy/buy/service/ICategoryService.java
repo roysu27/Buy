@@ -18,5 +18,10 @@ public interface ICategoryService {
 	 * 取得所有父類別
 	 */
 	public List<Category> getParentCategoryList();
+	
+	/**
+	 * 根據父類別編號取得子類別列表
+	 */
+	public List<Category> getChildCategoryList(int parent);
 
 }

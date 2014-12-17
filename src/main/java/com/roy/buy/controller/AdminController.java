@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.roy.buy.constant.View;
 import com.roy.buy.entity.Category;
@@ -69,8 +70,18 @@ public class AdminController {
 	 * 建立商品頁面
 	 */
 	@RequestMapping(value = "CreateProduct")
-	public String createProduct() {
+	public String createProduct(Model model) {
+		model.addAttribute("parentCategoryList", categoryService.getParentCategoryList());
 		return View.ADMIN_CREATE_PRODUCT;
+	}
+	
+	/**
+	 * 根據父類別取得子類別
+	 */
+	@RequestMapping(value = "GetChildCategory")
+	@ResponseBody
+	public Object getChildCategory(int parentCategory) {
+		return categoryService.getChildCategoryList(parentCategory);
 	}
 
 }
