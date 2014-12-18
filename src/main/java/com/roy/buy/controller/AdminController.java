@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.roy.buy.constant.View;
 import com.roy.buy.entity.Category;
+import com.roy.buy.entity.Product;
 import com.roy.buy.service.ICategoryService;
+import com.roy.buy.service.IProductService;
 
 /**
  * 管理後台Controller
@@ -22,6 +24,12 @@ public class AdminController {
 	 */
 	@Autowired
 	private ICategoryService categoryService;
+	
+	/**
+	 * 自動注入ProductService
+	 */
+	@Autowired
+	private IProductService productService;
 	
 	/**
 	 * 管理後台首頁
@@ -82,6 +90,15 @@ public class AdminController {
 	@ResponseBody
 	public Object getChildCategory(int parentCategory) {
 		return categoryService.getChildCategoryList(parentCategory);
+	}
+	
+	/**
+	 * 建立商品
+	 */
+	@RequestMapping(value = "SaveProduct")
+	public String saveProduct(int childCategory, String productName) {
+		productService.createProduct(new Product(childCategory, productName));;
+		return View.ADMIN_HOME;
 	}
 
 }

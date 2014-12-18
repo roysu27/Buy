@@ -12,7 +12,7 @@
 <body>
 	<script src="/resources/js/admin/createProduct.js"></script>
 
-	<form class="form-signin">
+	<form action="/Admin/SaveProduct" method="POST" class="form-signin">
 	    <h3 class="form-signin-heading">建立商品</h3>
 	    <select name="parentCategory" id="parentCategory">
 			<option value="0">請選擇父類別</option>
@@ -23,8 +23,8 @@
 	    <select name="childCategory" id="childCategory">
 			<option value="0">請選擇子類別</option>
 		</select><br>
-	    <input type="text" placeholder="商品名稱"><br>
-	    <button class="btn btn-primary" type="submit">建立</button>
+	    <input type="text" name="productName" placeholder="商品名稱"><br>
+	    <button type="submit" class="btn btn-primary">建立</button>
 	</form>
 
 </body>
