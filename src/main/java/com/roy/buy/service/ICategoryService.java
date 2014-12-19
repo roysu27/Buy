@@ -1,6 +1,7 @@
 package com.roy.buy.service;
 
 import java.util.List;
+import java.util.Map;
 
 import com.roy.buy.entity.Category;
 
@@ -23,5 +24,10 @@ public interface ICategoryService {
 	 * 根據父類別編號取得子類別列表
 	 */
 	public List<Category> getChildCategoryList(int parent);
+	
+	/**
+	 * 取得側邊欄
+	 */
+	public Map<Category, List<Category>> getSidebar();
 
 }

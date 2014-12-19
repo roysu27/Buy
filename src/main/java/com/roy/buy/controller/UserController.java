@@ -19,7 +19,7 @@ public class UserController {
 	 */
 	@RequestMapping("Logout")
 	public String logout(HttpSession session) {
-		session.invalidate();
+		session.removeAttribute("validUser");
 		return View.HOME;
 	}
 
