@@ -9,7 +9,7 @@ import com.roy.buy.dao.IProductDao;
 import com.roy.buy.entity.Product;
 import com.roy.buy.service.IProductService;
 
-@Service("productService")
+@Service
 public class ProductService implements IProductService {
 	
 	/**

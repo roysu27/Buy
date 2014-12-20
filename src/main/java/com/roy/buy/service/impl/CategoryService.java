@@ -14,7 +14,7 @@ import com.roy.buy.dao.ICategoryDao;
 import com.roy.buy.entity.Category;
 import com.roy.buy.service.ICategoryService;
 
-@Service("categoryService")
+@Service
 public class CategoryService implements ICategoryService {
 	
 	/**

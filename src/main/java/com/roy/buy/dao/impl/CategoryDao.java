@@ -2,12 +2,12 @@ package com.roy.buy.dao.impl;
 
 import java.util.List;
 
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Repository;
 
 import com.roy.buy.dao.ICategoryDao;
 import com.roy.buy.entity.Category;
 
-@Service("categoryDao")
+@Repository
 public class CategoryDao extends BaseDao<Category> implements ICategoryDao {
 	
 	public CategoryDao() {

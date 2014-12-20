@@ -1,11 +1,11 @@
 package com.roy.buy.dao.impl;
 
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Repository;
 
 import com.roy.buy.dao.IUserDao;
 import com.roy.buy.entity.User;
 
-@Service("userDao")
+@Repository
 public class UserDao extends BaseDao<User> implements IUserDao {
 	
 	public UserDao() {

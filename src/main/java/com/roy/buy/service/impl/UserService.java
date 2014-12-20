@@ -9,7 +9,7 @@ import com.roy.buy.entity.User;
 import com.roy.buy.exception.DataCheckException;
 import com.roy.buy.service.IUserService;
 
-@Service("userService")
+@Service
 public class UserService implements IUserService {
 	
 	/**
