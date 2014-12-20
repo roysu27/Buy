@@ -32,4 +32,7 @@ public class View {
 	/** 登入成功頁面 */
 	public static final String LOGIN_SUCCESS = "login/success";
 
+	/** 商品列表 */
+	public static final String PRODUCT_LIST = "product/list";
+
 }

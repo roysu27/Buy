@@ -29,7 +29,7 @@
                     		<li class="nav-header">${categoryMap.key.name}</li>
 	                    	<c:forEach var="category" items="${categoryMap.value}">
 	                    		<%-- 子類別 --%>
-                        		<li><a href="#">${category.name}</a></li>
+                        		<li><a href="/Product/List/${category.id}">${category.name}</a></li>
 	                    	</c:forEach>
                     	</c:forEach>
                     </ul>

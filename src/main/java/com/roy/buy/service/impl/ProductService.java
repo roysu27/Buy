@@ -1,5 +1,7 @@
 package com.roy.buy.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +21,11 @@ public class ProductService implements IProductService {
 	@Override
 	public void createProduct(Product product) {
 		productDao.save(product);
+	}
+
+	@Override
+	public List<Product> getProductList(int categoryId) {
+		return productDao.getProductList(categoryId);
 	}
 
 }
