@@ -2,6 +2,7 @@ package com.roy.buy.service;
 
 import com.roy.buy.entity.User;
 import com.roy.buy.exception.DataCheckException;
+import com.roy.buy.form.ChangePasswordForm;
 
 /**
  * 會員Service
@@ -23,5 +24,15 @@ public interface IUserService {
 	 * @throws DataCheckException
 	 */
 	public User login(String account, String password) throws DataCheckException;
-
+	
+	/**
+	 * 修改密碼, 如果舊密碼錯誤會拋出例外
+	 * @param userId
+	 * 			會員編號
+	 * @param form
+	 * 			修改密碼Form
+	 * @return {@link User}
+	 * @throws DataCheckException
+	 */
+	public User changePassword(int userId, ChangePasswordForm form) throws DataCheckException;
 }

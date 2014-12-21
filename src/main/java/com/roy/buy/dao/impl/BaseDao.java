@@ -40,6 +40,11 @@ public class BaseDao<T extends Serializable> implements IBaseDao<T> {
 	}
 
 	@Override
+	public void update(T entity) {
+		getSession().update(entity);
+	}
+
+	@Override
 	public void saveOrUpdate(T entity) {
 		getSession().saveOrUpdate(entity);
 	}
@@ -85,7 +90,7 @@ public class BaseDao<T extends Serializable> implements IBaseDao<T> {
         return criteria.list();
     }
 	
-	private Session getSession() {
+	public Session getSession() {
 		return this.sessionFactory.getCurrentSession();
 	}
 

@@ -14,6 +14,11 @@ public interface IBaseDao<T extends Serializable> {
 	public int save(T entity);
 
 	/**
+	 * 修改Entity
+	 */
+	public void update(T entity);
+
+	/**
 	 * 新增或修改Entity, 用ID區別功能
 	 */
 	public void saveOrUpdate(T entity);

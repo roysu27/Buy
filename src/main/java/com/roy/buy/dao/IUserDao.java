@@ -16,5 +16,10 @@ public interface IUserDao extends IBaseDao<User> {
 	 * 根據Email查詢, 若查詢不到回傳null
 	 */
 	public User findByEmail(String email);
+	
+	/**
+	 * 修改會員
+	 */
+	public void update(User user);
 
 }

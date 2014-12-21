@@ -10,5 +10,6 @@
 		<pattern>/Register/*</pattern>
 		<pattern>/Login</pattern>
 		<pattern>/Login/Form</pattern>
+		<pattern>/User/ChangePassword/*</pattern>
 	</decorator>
 </decorators>

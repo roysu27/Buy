@@ -35,4 +35,10 @@ public class View {
 	/** 商品列表 */
 	public static final String PRODUCT_LIST = "product/list";
 
+	/** 修改密碼表單 */
+	public static final String USER_CHANGE_PASSWORD_FROM = "user/changePassword/form";
+
+	/** 修改密碼成功頁面 */
+	public static final String USER_CHANGE_PASSWORD_SUCCESS = "user/changePassword/success";
+
 }

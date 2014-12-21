@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import com.roy.buy.dao.IUserDao;
 import com.roy.buy.entity.User;
 import com.roy.buy.exception.DataCheckException;
+import com.roy.buy.form.ChangePasswordForm;
 import com.roy.buy.service.IUserService;
 
 @Service
@@ -47,6 +48,32 @@ public class UserService implements IUserService {
 			throw new DataCheckException(12);
 		}
 		return user;
+	}
+
+	@Override
+	public User changePassword(int userId, ChangePasswordForm form)
+			throws DataCheckException {
+		if(!passwordCheck(userId, form.getOldPassword())) {
+			throw new DataCheckException(12);
+		}
+		User user = userDao.findById(userId);
+		user.setPassword(form.getMD5newPassword());
+		userDao.update(user);
+		return user;
+	}
+	
+	/**
+	 * 驗證輸入的密碼是否正確
+	 * @param userId
+	 * 			會員編號
+	 * @param password
+	 * 			輸入密碼
+	 * @return
+	 */
+	private boolean passwordCheck(int userId, String password) {
+		User user = userDao.findById(userId);
+		String md5Password = DigestUtils.md5Hex(password);
+		return user.getPassword().equals(md5Password);
 	}
 	
 }

@@ -24,11 +24,15 @@
                 	</c:choose>
                 </p>
                 <ul class="nav">
-                    <li class="active"><a href="/">Home</a></li>
+                    <li class="active"><a href="/">首頁</a></li>
                     <li><a href="/Register/Form">註冊</a></li>
                     <li><a href="/Admin/Home">管理後台</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">會員管理 <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/User/ChangePassword/Form">修改密碼</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
         </div>

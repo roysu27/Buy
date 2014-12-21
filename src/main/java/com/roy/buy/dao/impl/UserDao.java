@@ -21,5 +21,11 @@ public class UserDao extends BaseDao<User> implements IUserDao {
 	public User findByEmail(String email) {
 		return super.findBy("email", email);
 	}
+	
+	@Override
+	public void update(User user) {
+		super.update(user);
+		super.getSession().flush();
+	}
 
 }
