@@ -9,7 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.roy.buy.constant.View;
+import com.roy.buy.constant.View;
 import com.roy.buy.entity.User;
 import com.roy.buy.exception.DataCheckException;
 import com.roy.buy.form.ChangePasswordForm;

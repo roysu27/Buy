@@ -6,7 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.roy.buy.constant.View;
+import com.roy.buy.constant.View;
 import com.roy.buy.service.IProductService;
 
 /**

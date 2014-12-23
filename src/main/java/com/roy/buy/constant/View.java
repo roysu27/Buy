@@ -1,4 +1,4 @@
-package com.roy.buy.constant;
+package com.roy.buy.constant;
 
 /**
  * 畫面路徑

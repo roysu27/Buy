@@ -6,7 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.roy.buy.constant.View;
+import com.roy.buy.constant.View;
 import com.roy.buy.entity.Category;
 import com.roy.buy.entity.Product;
 import com.roy.buy.service.ICategoryService;
