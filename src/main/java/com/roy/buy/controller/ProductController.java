@@ -30,5 +30,14 @@ public class ProductController {
 		model.addAttribute("productList", productService.getProductList(categoryId));
 		return View.PRODUCT_LIST;
 	}
+	
+	/**
+	 * 商品資訊頁面
+	 */
+	@RequestMapping("Detail/{productId}")
+	public String detail(@PathVariable("productId") int productId, Model model) {
+		model.addAttribute("product", productService.getProductDetail(productId));
+		return View.PRODUCT_DETAIL;
+	}
 
 }

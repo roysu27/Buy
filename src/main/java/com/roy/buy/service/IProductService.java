@@ -20,5 +20,12 @@ public interface IProductService {
 	 * 			商品類別編號
 	 */
 	public List<Product> getProductList(int categoryId);
+	
+	/**
+	 * 取得商品資訊
+	 * @param productId
+	 * 			商品編號
+	 */
+	public Product getProductDetail(int productId);
 
 }

@@ -41,4 +41,7 @@ public class View {
 	/** 修改密碼成功頁面 */
 	public static final String USER_CHANGE_PASSWORD_SUCCESS = "user/changePassword/success";
 
+	/** 商品資訊頁面 */
+	public static final String PRODUCT_DETAIL = "product/detail";
+
 }

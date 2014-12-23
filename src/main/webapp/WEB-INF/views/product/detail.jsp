@@ -14,14 +14,12 @@
 	<table class="table table-bordered span5">
 		<tr>
 			<th class="span2">商品編號</th>
-			<th class="span4">商品名稱</th>
+			<td class="span4">${product.id}</td>
 		</tr>
-		<c:forEach var="product" items="${requestScope.productList}">
-			<tr>
-				<td>${product.id}</td>
-				<td><a href="/Product/Detail/${product.id}">${product.name}</a></td>
-			</tr>
-		</c:forEach>
+		<tr>
+			<th>商品名稱</th>
+			<td>${product.name}</td>
+		</tr>
 	</table>
 
 </body>
