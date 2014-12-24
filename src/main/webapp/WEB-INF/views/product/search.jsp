@@ -19,6 +19,12 @@
 	</div>
 	
 	<div>
+		搜尋到${requestScope.productList.size()}項商品
+	</div>
+	
+	<br>
+	
+	<div>
 		<table class="table table-bordered span5">
 			<tr>
 				<th class="span2">商品編號</th>

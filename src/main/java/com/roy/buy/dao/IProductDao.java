@@ -16,5 +16,13 @@ public interface IProductDao extends IBaseDao<Product> {
 	 * @return
 	 */
 	public List<Product> getProductList(int categoryId);
+	
+	/**
+	 * 根據字串模糊查詢商品
+	 * @param searchStr
+	 * 			搜尋字串
+	 * @return
+	 */
+	public List<Product> getProductListByLikeStr(String searchStr);
 
 }

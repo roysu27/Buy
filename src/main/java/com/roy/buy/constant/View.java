@@ -44,4 +44,7 @@ public class View {
 	/** 商品資訊頁面 */
 	public static final String PRODUCT_DETAIL = "product/detail";
 
+	/** 商品搜尋結果頁面 */
+	public static final String PRODUCT_SEARCH = "product/search";
+
 }

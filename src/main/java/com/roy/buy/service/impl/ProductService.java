@@ -33,4 +33,9 @@ public class ProductService implements IProductService {
 		return productDao.findById(productId);
 	}
 
+	@Override
+	public List<Product> searchProduct(String searchStr) {
+		return productDao.getProductListByLikeStr(searchStr);
+	}
+
 }

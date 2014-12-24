@@ -39,5 +39,14 @@ public class ProductController {
 		model.addAttribute("product", productService.getProductDetail(productId));
 		return View.PRODUCT_DETAIL;
 	}
+	
+	/**
+	 * 搜尋商品
+	 */
+	@RequestMapping("Search")
+	public String search(String searchStr, Model model) {
+		model.addAttribute("productList", productService.searchProduct(searchStr));
+		return View.PRODUCT_SEARCH;
+	}
 
 }

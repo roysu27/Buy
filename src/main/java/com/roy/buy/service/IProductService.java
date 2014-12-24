@@ -27,5 +27,12 @@ public interface IProductService {
 	 * 			商品編號
 	 */
 	public Product getProductDetail(int productId);
+	
+	/**
+	 * 搜尋商品
+	 * @param searchStr
+	 * 			搜尋字串
+	 */
+	public List<Product> searchProduct(String searchStr);
 
 }
