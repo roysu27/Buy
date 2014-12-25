@@ -7,12 +7,14 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.roy.buy.constant.View;
 import com.roy.buy.entity.User;
 import com.roy.buy.exception.DataCheckException;
 import com.roy.buy.form.ChangePasswordForm;
+import com.roy.buy.service.ICartService;
 import com.roy.buy.service.IUserService;
 
 /**
@@ -27,6 +29,12 @@ public class UserController {
 	 */
 	@Autowired
 	private IUserService userService;
+
+	/**
+	 * 自動注入CartService
+	 */
+	@Autowired
+	private ICartService cartService;
 	
 	/**
 	 * 會員登出
@@ -64,6 +72,40 @@ public class UserController {
 			return View.USER_CHANGE_PASSWORD_FROM;
 		}
 		return View.USER_CHANGE_PASSWORD_SUCCESS;
+	}
+	
+	/**
+	 * 購物車列表
+	 */
+	@RequestMapping("Cart/List")
+	public String cartList(HttpSession session, Model model) {
+		User user = (User) session.getAttribute("validUser");
+		model.addAttribute("productList", cartService.getCartList(user.getId()));
+		return View.USER_CART;
+	}
+	
+	/**
+	 * 購物車加入商品
+	 */
+	@RequestMapping("Cart/Add/{productId}")
+	public String cartAdd(HttpSession session, @PathVariable("productId") int productId, Model model) {
+		User user = (User) session.getAttribute("validUser");
+		int userId = user.getId();
+		cartService.addProduct(userId, productId);
+		model.addAttribute("productList", cartService.getCartList(userId));
+		return View.USER_CART;
+	}
+	
+	/**
+	 * 購物車移除商品
+	 */
+	@RequestMapping("Cart/Delete/{productId}")
+	public String cartDelete(HttpSession session, @PathVariable("productId") int productId, Model model) {
+		User user = (User) session.getAttribute("validUser");
+		int userId = user.getId();
+		cartService.deleteProduct(userId, productId);
+		model.addAttribute("productList", cartService.getCartList(userId));
+		return View.USER_CART;
 	}
 
 }

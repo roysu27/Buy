@@ -17,16 +17,21 @@ public class ProductDao extends BaseDao<Product> implements IProductDao {
 	}
 
 	@Override
-	public List<Product> getProductList(int categoryId) {
+	public List<Product> findProductList(int categoryId) {
 		return super.findListBy("category", categoryId);
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Product> getProductListByLikeStr(String searchStr) {
+	public List<Product> findProductListByLikeStr(String searchStr) {
         Criteria criteria = super.getSession().createCriteria(Product.class);    
         criteria.add(Restrictions.like("name", "%" + searchStr + "%"));
 		return criteria.list();
+	}
+
+	@Override
+	public List<Product> findProductListByProductIdList(List<Integer> productIdList) {
+		return super.findListBy("id", productIdList);
 	}
 
 }

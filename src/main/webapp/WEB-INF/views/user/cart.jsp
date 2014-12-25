@@ -10,26 +10,19 @@
 </head>
 
 <body>
-
-	<div>
-		<form action="/Product/Search" method="POST" class="form-search">
-			<input type="text" name="searchStr" class="input-medium search-query">
-			<button type="submit" class="btn">搜尋</button>
-		</form>
-	</div>
 	
 	<div>
 		<table class="table table-bordered span4">
 			<tr>
 				<th class="span2">商品編號</th>
 				<th class="span4">商品名稱</th>
-				<th class="span2">購物車</th>
+				<th class="span2">功能</th>
 			</tr>
 			<c:forEach var="product" items="${requestScope.productList}">
 				<tr>
 					<td>${product.id}</td>
 					<td><a href="/Product/Detail/${product.id}">${product.name}</a></td>
-					<td><a href="/User/Cart/Add/${product.id}">加入</a></td>
+					<td><a href="/User/Cart/Delete/${product.id}">移除</a></td>
 				</tr>
 			</c:forEach>
 		</table>

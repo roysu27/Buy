@@ -13,7 +13,7 @@ import com.roy.buy.service.IProductService;
 public class ProductService implements IProductService {
 	
 	/**
-	 * 自動注入CategoryDao
+	 * 自動注入ProductDao
 	 */
 	@Autowired
 	private IProductDao productDao;
@@ -25,7 +25,7 @@ public class ProductService implements IProductService {
 
 	@Override
 	public List<Product> getProductList(int categoryId) {
-		return productDao.getProductList(categoryId);
+		return productDao.findProductList(categoryId);
 	}
 
 	@Override
@@ -35,7 +35,7 @@ public class ProductService implements IProductService {
 
 	@Override
 	public List<Product> searchProduct(String searchStr) {
-		return productDao.getProductListByLikeStr(searchStr);
+		return productDao.findProductListByLikeStr(searchStr);
 	}
 
 }

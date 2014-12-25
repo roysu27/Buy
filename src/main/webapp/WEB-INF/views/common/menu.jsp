@@ -33,6 +33,7 @@
                             <li><a href="/User/ChangePassword/Form">修改密碼</a></li>
                         </ul>
                     </li>
+                    <li><a href="/User/Cart/List">購物車</a></li>
                 </ul>
             </div>
         </div>

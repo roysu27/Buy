@@ -25,15 +25,17 @@
 	<br>
 	
 	<div>
-		<table class="table table-bordered span5">
+		<table class="table table-bordered span4">
 			<tr>
 				<th class="span2">商品編號</th>
 				<th class="span4">商品名稱</th>
+				<th class="span2">購物車</th>
 			</tr>
 			<c:forEach var="product" items="${requestScope.productList}">
 				<tr>
 					<td>${product.id}</td>
 					<td><a href="/Product/Detail/${product.id}">${product.name}</a></td>
+					<td><a href="/User/Cart/Add/${product.id}">加入</a></td>
 				</tr>
 			</c:forEach>
 		</table>

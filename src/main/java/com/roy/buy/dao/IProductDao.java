@@ -15,7 +15,7 @@ public interface IProductDao extends IBaseDao<Product> {
 	 * 			商品類別編號
 	 * @return
 	 */
-	public List<Product> getProductList(int categoryId);
+	public List<Product> findProductList(int categoryId);
 	
 	/**
 	 * 根據字串模糊查詢商品
@@ -23,6 +23,14 @@ public interface IProductDao extends IBaseDao<Product> {
 	 * 			搜尋字串
 	 * @return
 	 */
-	public List<Product> getProductListByLikeStr(String searchStr);
+	public List<Product> findProductListByLikeStr(String searchStr);
+	
+	/**
+	 * 根據多筆商品編號查詢商品
+	 * @param productIdList
+	 * 			商品編號List
+	 * @return
+	 */
+	public List<Product> findProductListByProductIdList(List<Integer> productIdList);
 
 }

@@ -90,6 +90,16 @@ public class BaseDao<T extends Serializable> implements IBaseDao<T> {
         return criteria.list();
     }
 	
+	/**
+	 * 根據欄位名稱與多個查詢條件, 回傳Entity List
+	 */
+	@SuppressWarnings("unchecked")
+	public List<T> findListBy(String columnName, List<Integer> valueList) {
+        Criteria criteria = getSession().createCriteria(clazz);    
+        criteria.add(Restrictions.in(columnName, valueList));
+        return criteria.list();
+    }
+	
 	public Session getSession() {
 		return this.sessionFactory.getCurrentSession();
 	}
