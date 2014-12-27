@@ -96,8 +96,8 @@ public class AdminController {
 	 * 建立商品
 	 */
 	@RequestMapping(value = "SaveProduct")
-	public String saveProduct(int childCategory, String productName) {
-		productService.createProduct(new Product(childCategory, productName));;
+	public String saveProduct(int childCategory, String productName, int price) {
+		productService.createProduct(new Product(childCategory, productName, price));;
 		return View.ADMIN_HOME;
 	}
 

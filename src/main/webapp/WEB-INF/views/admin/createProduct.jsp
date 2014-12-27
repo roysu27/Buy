@@ -24,6 +24,7 @@
 			<option value="0">請選擇子類別</option>
 		</select><br>
 	    <input type="text" name="productName" placeholder="商品名稱"><br>
+	    <input type="text" name="price" placeholder="商品價格"><br>
 	    <button type="submit" class="btn btn-primary">建立</button>
 	</form>
 

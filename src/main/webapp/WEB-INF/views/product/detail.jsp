@@ -11,10 +11,10 @@
 
 <body>
 
-	<table class="table table-bordered span5">
+	<table class="table table-bordered">
 		<tr>
-			<th class="span2">商品編號</th>
-			<td class="span4">${product.id}</td>
+			<th>商品編號</th>
+			<td>${product.id}</td>
 		</tr>
 		<tr>
 			<th>商品名稱</th>

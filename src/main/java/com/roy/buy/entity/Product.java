@@ -26,13 +26,17 @@ public class Product implements Serializable {
 	/** 商品名稱 */
 	private String name;
 	
+	/** 價格 */
+	private int price;
+	
 	public Product() {
 		
 	}
 	
-	public Product(int category, String name) {
+	public Product(int category, String name, int price) {
 		this.category = category;
 		this.name = name;
+		this.price = price;
 	}
 
 	public int getId() {
@@ -57,6 +61,14 @@ public class Product implements Serializable {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public int getPrice() {
+		return price;
+	}
+
+	public void setPrice(int price) {
+		this.price = price;
 	}
 
 }

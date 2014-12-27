@@ -107,5 +107,13 @@ public class UserController {
 		model.addAttribute("productList", cartService.getCartList(userId));
 		return View.USER_CART;
 	}
+	
+	/**
+	 * 購買商品
+	 */
+	@RequestMapping("Buy")
+	public String buy(int[] productId) {
+		return View.USER_CART;
+	}
 
 }

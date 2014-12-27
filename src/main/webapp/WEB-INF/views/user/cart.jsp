@@ -12,20 +12,28 @@
 <body>
 	
 	<div>
-		<table class="table table-bordered table-hover">
-			<tr>
-				<th class="span2">商品編號</th>
-				<th class="span4">商品名稱</th>
-				<th class="span2">功能</th>
-			</tr>
-			<c:forEach var="product" items="${requestScope.productList}">
+		<form action="/User/Buy" method="POST">
+			<table class="table table-bordered table-hover">
 				<tr>
-					<td>${product.id}</td>
-					<td><a href="/Product/Detail/${product.id}">${product.name}</a></td>
-					<td><a href="/User/Cart/Delete/${product.id}">移除</a></td>
+					<th>商品編號</th>
+					<th>商品名稱</th>
+					<th>價格</th>
+					<th>功能</th>
 				</tr>
-			</c:forEach>
-		</table>
+				<c:forEach var="product" items="${requestScope.productList}">
+					<input type="hidden" name="productId" value="${product.id}">
+					<tr>
+						<td>${product.id}</td>
+						<td><a href="/Product/Detail/${product.id}">${product.name}</a></td>
+						<td>${product.price}</td>
+						<td><a href="/User/Cart/Delete/${product.id}">移除</a></td>
+					</tr>
+				</c:forEach>
+			</table>
+			<!-- 
+			<button type="submit" class="btn btn-primary">購買</button>
+			 -->
+		</form>
 	</div>
 	
 </body>
