@@ -19,7 +19,7 @@
 	</div>
 	
 	<div>
-		<table class="table table-bordered span4">
+		<table class="table table-bordered span6">
 			<tr>
 				<th class="span2">商品編號</th>
 				<th class="span4">商品名稱</th>
