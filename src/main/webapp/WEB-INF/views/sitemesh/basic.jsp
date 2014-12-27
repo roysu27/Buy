@@ -36,7 +36,7 @@
                 </div>
             </div>
             
-            <div class="span9">
+            <div class="span6">
             	<decorator:body/>
             </div>
             

@@ -19,11 +19,11 @@
 	</div>
 	
 	<div>
-		<table class="table table-bordered span6">
+		<table class="table table-bordered table-hover">
 			<tr>
-				<th class="span2">商品編號</th>
-				<th class="span4">商品名稱</th>
-				<th class="span2">購物車</th>
+				<th>商品編號</th>
+				<th>商品名稱</th>
+				<th>購物車</th>
 			</tr>
 			<c:forEach var="product" items="${requestScope.productList}">
 				<tr>

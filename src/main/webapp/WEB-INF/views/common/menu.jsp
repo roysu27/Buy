@@ -25,15 +25,21 @@
                 </p>
                 <ul class="nav">
                     <li class="active"><a href="/">首頁</a></li>
-                    <li><a href="/Register/Form">註冊</a></li>
-                    <li><a href="/Admin/Home">管理後台</a></li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">會員管理 <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="/User/ChangePassword/Form">修改密碼</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="/User/Cart/List">購物車</a></li>
+                	<c:choose>
+                		<c:when test="${sessionScope.validUser != null}">
+		                    <li><a href="/Admin/Home">管理後台</a></li>
+		                    <li class="dropdown">
+		                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">會員管理 <b class="caret"></b></a>
+		                        <ul class="dropdown-menu">
+		                            <li><a href="/User/ChangePassword/Form">修改密碼</a></li>
+		                        </ul>
+		                    </li>
+		                    <li><a href="/User/Cart/List">購物車</a></li>
+                		</c:when>
+                		<c:otherwise>
+                    		<li><a href="/Register/Form">註冊</a></li>
+                		</c:otherwise>
+                	</c:choose>
                 </ul>
             </div>
         </div>
