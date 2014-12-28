@@ -29,5 +29,11 @@ public interface ICartService {
 	 * @param productId
 	 */
 	public void deleteProduct(int userId, int productId);
+	
+	/**
+	 * 移除購物車商品
+	 * @param userId
+	 */
+	public void deleteProduct(int userId);
 
 }

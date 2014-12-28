@@ -35,4 +35,12 @@ public interface IUserService {
 	 * @throws DataCheckException
 	 */
 	public User changePassword(int userId, ChangePasswordForm form) throws DataCheckException;
+	
+	/**
+	 * 儲存購買記錄
+	 * @param userId
+	 * @param productId
+	 * @param orderId
+	 */
+	public void saveBuyRecord(int userId, int[] productId, int orderId);
 }

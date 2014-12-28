@@ -1,5 +1,6 @@
 package com.roy.buy.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +37,20 @@ public class ProductService implements IProductService {
 	@Override
 	public List<Product> searchProduct(String searchStr) {
 		return productDao.findProductListByLikeStr(searchStr);
+	}
+
+	@Override
+	public int countProductTotal(int[] productIdArray) {
+		List<Integer> productIdList = new ArrayList<>();
+		for(int id : productIdArray) {
+			productIdList.add(new Integer(id));
+		}
+		List<Product> productList = productDao.findProductListByProductIdList(productIdList);
+		int result = 0;
+		for(Product product : productList) {
+			result += product.getPrice();
+		}
+		return result;
 	}
 
 }

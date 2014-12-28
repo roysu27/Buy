@@ -21,7 +21,7 @@
 					<th>功能</th>
 				</tr>
 				<c:forEach var="product" items="${requestScope.productList}">
-					<input type="hidden" name="productId" value="${product.id}">
+					<input type="hidden" name="productIdArray" value="${product.id}">
 					<tr>
 						<td>${product.id}</td>
 						<td><a href="/Product/Detail/${product.id}">${product.name}</a></td>
@@ -30,9 +30,7 @@
 					</tr>
 				</c:forEach>
 			</table>
-			<!-- 
 			<button type="submit" class="btn btn-primary">購買</button>
-			 -->
 		</form>
 	</div>
 	

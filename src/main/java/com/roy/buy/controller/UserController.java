@@ -15,6 +15,7 @@ import com.roy.buy.entity.User;
 import com.roy.buy.exception.DataCheckException;
 import com.roy.buy.form.ChangePasswordForm;
 import com.roy.buy.service.ICartService;
+import com.roy.buy.service.IOrderService;
 import com.roy.buy.service.IUserService;
 
 /**
@@ -35,6 +36,12 @@ public class UserController {
 	 */
 	@Autowired
 	private ICartService cartService;
+
+	/**
+	 * 自動注入OrderService
+	 */
+	@Autowired
+	private IOrderService orderService;
 	
 	/**
 	 * 會員登出
@@ -112,8 +119,10 @@ public class UserController {
 	 * 購買商品
 	 */
 	@RequestMapping("Buy")
-	public String buy(int[] productId) {
-		return View.USER_CART;
+	public String buy(HttpSession session, int[] productIdArray, Model model) {
+		User user = (User) session.getAttribute("validUser");
+		model.addAttribute("order", orderService.createOrder(user.getId(), productIdArray));
+		return View.ORDER_CREATE;
 	}
 
 }

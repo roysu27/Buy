@@ -29,4 +29,12 @@ public class CartDao extends BaseDao<Cart> implements ICartDao {
 		query.executeUpdate();
 	}
 
+	@Override
+	public void deleteCartByUserId(int userId) {
+		String hql = "DELETE Cart WHERE userId = :userId";
+		Query query = super.getSession().createQuery(hql);
+		query.setInteger("userId", userId);
+		query.executeUpdate();
+	}
+
 }

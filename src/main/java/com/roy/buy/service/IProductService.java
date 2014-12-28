@@ -34,5 +34,13 @@ public interface IProductService {
 	 * 			搜尋字串
 	 */
 	public List<Product> searchProduct(String searchStr);
+	
+	/**
+	 * 計算多樣商品總額
+	 * @param productId
+	 * 			商品編號陣列
+	 * @return 商品總額
+	 */
+	public int countProductTotal(int[] productIdArray);
 
 }

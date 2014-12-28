@@ -4,7 +4,9 @@ import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.roy.buy.dao.IBuyRecordDao;
 import com.roy.buy.dao.IUserDao;
+import com.roy.buy.entity.BuyRecord;
 import com.roy.buy.entity.User;
 import com.roy.buy.exception.DataCheckException;
 import com.roy.buy.form.ChangePasswordForm;
@@ -18,6 +20,12 @@ public class UserService implements IUserService {
 	 */
 	@Autowired
 	private IUserDao userDao;
+	
+	/**
+	 * 自動注入BuyRecordDao
+	 */
+	@Autowired
+	private IBuyRecordDao buyRecord;
 
 	@Override
 	public void register(User user) throws DataCheckException {
@@ -74,6 +82,13 @@ public class UserService implements IUserService {
 		User user = userDao.findById(userId);
 		String md5Password = DigestUtils.md5Hex(password);
 		return user.getPassword().equals(md5Password);
+	}
+
+	@Override
+	public void saveBuyRecord(int userId, int[] productId, int orderId) {
+		for(int id : productId) {
+			buyRecord.save(new BuyRecord(userId, id, orderId));
+		}
 	}
 	
 }

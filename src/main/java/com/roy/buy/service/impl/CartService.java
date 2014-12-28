@@ -50,4 +50,9 @@ public class CartService implements ICartService {
 		cartDao.deleteCartByUserIdAndProductId(userId, productId);
 	}
 
+	@Override
+	public void deleteProduct(int userId) {
+		cartDao.deleteCartByUserId(userId);
+	}
+
 }

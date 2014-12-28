@@ -50,4 +50,7 @@ public class View {
 	/** 購物車頁面 */
 	public static final String USER_CART = "user/cart";
 
+	/** 訂單建立頁面 */
+	public static final String ORDER_CREATE = "order/create";
+
 }
