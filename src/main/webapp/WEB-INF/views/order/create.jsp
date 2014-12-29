@@ -9,7 +9,18 @@
 
 <body>
 
-	訂單建立頁面
+	<div class="span8 offset2">
+		<table class="table table-bordered">
+			<tr>
+				<th class="span2">訂單編號</th>
+				<td class="span6">${order.id}</td>
+			</tr>
+			<tr>
+				<th>總金額</th>
+				<td>${order.money}</td>
+			</tr>
+		</table>
+	</div>
 
 </body>
 </html>

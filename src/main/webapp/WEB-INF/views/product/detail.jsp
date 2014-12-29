@@ -11,16 +11,22 @@
 
 <body>
 
-	<table class="table table-bordered">
-		<tr>
-			<th>商品編號</th>
-			<td>${product.id}</td>
-		</tr>
-		<tr>
-			<th>商品名稱</th>
-			<td>${product.name}</td>
-		</tr>
-	</table>
+	<div class="span8 offset2">
+		<table class="table table-bordered">
+			<tr>
+				<th class="span2">商品編號</th>
+				<td class="span6">${product.id}</td>
+			</tr>
+			<tr>
+				<th>商品名稱</th>
+				<td>${product.name}</td>
+			</tr>
+			<tr>
+				<th>商品價格</th>
+				<td>${product.price}</td>
+			</tr>
+		</table>
+	</div>
 
 </body>
 </html>

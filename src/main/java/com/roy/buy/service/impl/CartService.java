@@ -30,7 +30,7 @@ public class CartService implements ICartService {
 	@Override
 	public List<Product> getCartList(int userId) {
 		List<Cart> cartList = cartDao.findByUserId(userId);
-		if(cartList == null) {
+		if(cartList.isEmpty()) {
 			return null;
 		}
 		List<Integer> productIdList = new ArrayList<>();

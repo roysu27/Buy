@@ -21,7 +21,7 @@
     <div class="container-fluid">
         <div class="row-fluid">
         
-            <div class="span3">
+            <div class="span2">
                 <div class="well sidebar-nav">
                     <ul class="nav nav-list">
                     	<c:forEach var="categoryMap" items="${sessionScope.sidebar}">
@@ -36,7 +36,7 @@
                 </div>
             </div>
             
-            <div class="span6">
+            <div class="span8">
             	<decorator:body/>
             </div>
             
