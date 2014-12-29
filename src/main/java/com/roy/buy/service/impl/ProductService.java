@@ -53,4 +53,9 @@ public class ProductService implements IProductService {
 		return result;
 	}
 
+	@Override
+	public void updateProduct(Product product) {
+		productDao.update(product);
+	}
+
 }

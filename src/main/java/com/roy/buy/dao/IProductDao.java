@@ -32,5 +32,10 @@ public interface IProductDao extends IBaseDao<Product> {
 	 * @return
 	 */
 	public List<Product> findProductListByProductIdList(List<Integer> productIdList);
+	
+	/**
+	 * 修改商品
+	 */
+	public void update(Product product);
 
 }

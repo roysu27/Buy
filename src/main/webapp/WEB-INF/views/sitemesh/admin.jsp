@@ -29,17 +29,7 @@
                         <li><a href="/Admin/CreateParentCategory">新增父類別</a></li>
                         <li><a href="/Admin/CreateChildCategory">新增子類別</a></li>
                         <li><a href="/Admin/CreateProduct">新增商品</a></li>
-                        <li class="nav-header">Sidebar</li>
-                        <li class="active"><a href="#">Link</a></li>
-                        <li><a href="#">Link</a></li>
-                        <li><a href="#">Link</a></li>
-                        <li><a href="#">Link</a></li>
-                        <li><a href="#">Link</a></li>
-                        <li><a href="#">Link</a></li>
-                        <li class="nav-header">Sidebar</li>
-                        <li><a href="#">Link</a></li>
-                        <li><a href="#">Link</a></li>
-                        <li><a href="#">Link</a></li>
+                        <li><a href="/Admin/UpdateProductPage">修改商品</a></li>
                     </ul>
                 </div>
             </div>

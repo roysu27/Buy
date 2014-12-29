@@ -3,6 +3,7 @@ package com.roy.buy.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -86,9 +87,9 @@ public class AdminController {
 	/**
 	 * 根據父類別取得子類別
 	 */
-	@RequestMapping(value = "GetChildCategory")
+	@RequestMapping(value = "GetChildCategory/{parentCategory}")
 	@ResponseBody
-	public Object getChildCategory(int parentCategory) {
+	public Object getChildCategory(@PathVariable("parentCategory") int parentCategory) {
 		return categoryService.getChildCategoryList(parentCategory);
 	}
 	
@@ -99,6 +100,44 @@ public class AdminController {
 	public String saveProduct(int childCategory, String productName, int price) {
 		productService.createProduct(new Product(childCategory, productName, price));;
 		return View.ADMIN_HOME;
+	}
+	
+	/**
+	 * 修改商品頁面
+	 */
+	@RequestMapping(value = "UpdateProductPage")
+	public String updateProductPage(Model model) {
+		model.addAttribute("parentCategoryList", categoryService.getParentCategoryList());
+		return View.ADMIN_UPDATE_PRODUCT;
+	}
+	
+	/**
+	 * 根據子類別取得商品
+	 */
+	@RequestMapping(value = "GetProductList/{childCategory}")
+	@ResponseBody
+	public Object getProductList(@PathVariable("childCategory") int childCategory) {
+		return productService.getProductList(childCategory);
+	}
+	
+	/**
+	 * 修改商品
+	 */
+	@RequestMapping(value = "UpdateProduct")
+	public String updateProduct(int productId, int childCategory, String productName, int price) {
+		Product product = new Product(childCategory, productName, price);
+		product.setId(productId);
+		productService.updateProduct(product);;
+		return View.ADMIN_HOME;
+	}
+	
+	/**
+	 * 根據商品編號取得商品內容
+	 */
+	@RequestMapping(value = "GetProduct/{productId}")
+	@ResponseBody
+	public Object getProduct(@PathVariable("productId") int productId) {
+		return productService.getProductDetail(productId);
 	}
 
 }

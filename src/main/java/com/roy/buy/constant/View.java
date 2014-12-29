@@ -53,4 +53,7 @@ public class View {
 	/** 訂單建立頁面 */
 	public static final String ORDER_CREATE = "order/create";
 
+	/** 商品修改頁面 */
+	public static final String ADMIN_UPDATE_PRODUCT = "admin/updateProduct";
+
 }

@@ -42,5 +42,10 @@ public interface IProductService {
 	 * @return 商品總額
 	 */
 	public int countProductTotal(int[] productIdArray);
+	
+	/**
+	 * 修改商品
+	 */
+	public void updateProduct(Product product);
 
 }

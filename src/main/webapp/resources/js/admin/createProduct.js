@@ -13,7 +13,7 @@ $(document).ready(function() {
 		}
 		// 使用ajax, 根據父類別取得子類別
 		$.ajax({
-			url: '/Admin/GetChildCategory?parentCategory=' + parentCategory,
+			url: '/Admin/GetChildCategory/' + parentCategory,
 			type: 'POST',
 			dataType: 'json',
 			success: function(data) {

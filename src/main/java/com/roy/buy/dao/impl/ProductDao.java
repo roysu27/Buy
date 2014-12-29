@@ -33,5 +33,11 @@ public class ProductDao extends BaseDao<Product> implements IProductDao {
 	public List<Product> findProductListByProductIdList(List<Integer> productIdList) {
 		return super.findListBy("id", productIdList);
 	}
+	
+	@Override
+	public void update(Product product) {
+		super.update(product);
+		super.getSession().flush();
+	}
 
 }
