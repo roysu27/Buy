@@ -47,5 +47,12 @@ public interface IProductService {
 	 * 修改商品
 	 */
 	public void updateProduct(Product product);
+	
+	/**
+	 * 根據商品編號列表取得商品列表
+	 * @param idList
+	 * @return
+	 */
+	public List<Product> getProductListByIdList(List<Integer> idList);
 
 }

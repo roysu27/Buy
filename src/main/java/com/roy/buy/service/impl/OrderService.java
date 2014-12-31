@@ -1,13 +1,17 @@
 package com.roy.buy.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.roy.buy.constant.BuyConstant;
+import com.roy.buy.dao.IBuyRecordDao;
 import com.roy.buy.dao.IOrderDao;
+import com.roy.buy.entity.BuyRecord;
 import com.roy.buy.entity.Order;
+import com.roy.buy.entity.Product;
 import com.roy.buy.service.ICartService;
 import com.roy.buy.service.IOrderService;
 import com.roy.buy.service.IProductService;
@@ -39,6 +43,9 @@ public class OrderService implements IOrderService {
 	 */
 	@Autowired
 	private ICartService cartService;
+
+	@Autowired
+	private IBuyRecordDao buyRecordDao;
 
 	@Override
 	public Order createOrder(int userId, int[] productIdArray) {
@@ -75,6 +82,17 @@ public class OrderService implements IOrderService {
 	@Override
 	public Order getOrderDetail(int orderId) {
 		return orderDao.findById(orderId);
+	}
+
+	@Override
+	public List<Product> getProductList(int orderId) {
+		List<BuyRecord> buyRecordList = buyRecordDao.findByOrderId(orderId);
+		// 根據購買記錄取得該訂單產品編號列表
+		List<Integer> productIdList = new ArrayList<>();
+		for(BuyRecord buyRecord : buyRecordList) {
+			productIdList.add(buyRecord.getProductId());
+		}
+		return productService.getProductListByIdList(productIdList);
 	}
 
 }

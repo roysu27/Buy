@@ -3,6 +3,7 @@ package com.roy.buy.service;
 import java.util.List;
 
 import com.roy.buy.entity.Order;
+import com.roy.buy.entity.Product;
 
 /**
  * 訂單Service
@@ -43,5 +44,12 @@ public interface IOrderService {
 	 * @return
 	 */
 	public Order getOrderDetail(int orderId);
+	
+	/**
+	 * 取得訂單產品
+	 * @param orderId
+	 * @return
+	 */
+	public List<Product> getProductList(int orderId);
 
 }

@@ -22,6 +22,20 @@
 				<td>${order.money}</td>
 			</tr>
 		</table>
+		<table class="table table-bordered">
+			<tr>
+				<th class="span2">商品編號</th>
+				<th class="span4">商品名稱</th>
+				<th class="span2">商品價格</th>
+			</tr>
+			<c:forEach var="product" items="${productList}">
+				<tr>
+					<td>${product.id}</td>
+					<td>${product.name}</td>
+					<td>${product.price}</td>
+				</tr>
+			</c:forEach>
+		</table>
 	</div>
 
 </body>

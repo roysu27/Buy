@@ -58,4 +58,9 @@ public class ProductService implements IProductService {
 		productDao.update(product);
 	}
 
+	@Override
+	public List<Product> getProductListByIdList(List<Integer> idList) {
+		return productDao.findProductListByProductIdList(idList);
+	}
+
 }
