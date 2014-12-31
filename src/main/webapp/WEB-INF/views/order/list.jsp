@@ -11,7 +11,11 @@
 
 <body>
     <script src="/resources/js/order/list.js"></script>
-
+    
+	<div class="page-header">
+		<h1>訂單管理 <small>可由此檢視您的訂單狀態</small></h1>
+	</div>
+	
 	<table class="table table-bordered table-hover">
 		<tr>
 			<th>訂單編號</th>

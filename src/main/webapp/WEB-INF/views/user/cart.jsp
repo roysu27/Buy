@@ -10,6 +10,10 @@
 </head>
 
 <body>
+    
+	<div class="page-header">
+		<h1>購物車 <small>可由此檢視您的購買清單</small></h1>
+	</div>
 	
 	<div>
 		<form action="/User/Buy" method="POST">
