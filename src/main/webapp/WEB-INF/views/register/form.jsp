@@ -13,7 +13,7 @@
 <body>
 
 	<form:form action="/Register/Save" method="POST" modelAttribute="registerForm" class="form-signin">
-	    <h2 class="form-signin-heading">會員註冊</h2>
+	    <h2 class="form-signin-heading text-center">會員註冊</h2>
 	    <form:input path="account" class="input-block-level" placeholder="帳號"/>
 	    <form:password path="password" class="input-block-level" placeholder="密碼"/>
 	    <form:password path="passwordCheck" class="input-block-level" placeholder="密碼確認"/>

@@ -13,7 +13,7 @@
 <body>
 
 	<form:form action="/Login" method="POST" modelAttribute="loginForm" class="form-signin">
-	    <h2 class="form-signin-heading">會員登入</h2>
+	    <h2 class="form-signin-heading text-center">會員登入</h2>
 	    <form:input path="account" class="input-block-level" placeholder="帳號"/>
 	    <form:password path="password" class="input-block-level" placeholder="密碼"/>
 	    <%-- 如果驗證不通過, 顯示錯誤提示訊息 --%>
@@ -24,7 +24,7 @@
 				</c:forEach>
 			</div>
 		</c:if>
-	    <input type="submit" value="登入" class="btn btn-large btn-primary">
+	    <input type="submit" value="登入" class="btn btn-large btn-block btn-primary">
 	</form:form>
 
 </body>
