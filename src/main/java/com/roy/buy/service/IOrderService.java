@@ -1,5 +1,7 @@
 package com.roy.buy.service;
 
+import java.util.List;
+
 import com.roy.buy.entity.Order;
 
 /**
@@ -28,5 +30,18 @@ public interface IOrderService {
 	 * @param orderId
 	 */
 	public void cancelOrder(int orderId);
+	
+	/**
+	 * 取得訂單列表
+	 * @return
+	 */
+	public List<Order> getOrderList();
+	
+	/**
+	 * 取得訂單資訊
+	 * @param orderId
+	 * @return
+	 */
+	public Order getOrderDetail(int orderId);
 
 }

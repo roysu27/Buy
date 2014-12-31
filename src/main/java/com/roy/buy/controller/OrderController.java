@@ -2,6 +2,7 @@ package com.roy.buy.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -37,6 +38,24 @@ public class OrderController {
 	public String cancel(@PathVariable("orderId") int orderId) {
 		orderService.cancelOrder(orderId);
 		return View.ORDER_CANCEL;
+	}
+	
+	/**
+	 * 訂單列表
+	 */
+	@RequestMapping("List")
+	public String list(Model model) {
+		model.addAttribute("orderList", orderService.getOrderList());
+		return View.ORDER_LIST;
+	}
+	
+	/**
+	 * 訂單資訊
+	 */
+	@RequestMapping("Detail/{orderId}")
+	public String detail(@PathVariable("orderId") int orderId, Model model) {
+		model.addAttribute("order", orderService.getOrderDetail(orderId));
+		return View.ORDER_DETAIL;
 	}
 
 }

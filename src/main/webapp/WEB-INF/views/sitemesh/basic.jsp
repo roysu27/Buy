@@ -12,6 +12,8 @@
     <link href="/resources/bootstrap/bootstrap.css" rel="stylesheet">
     <link href="/resources/css/sitemesh/basic.css" rel="stylesheet">
     <link href="/resources/bootstrap/bootstrap-responsive.css" rel="stylesheet">
+    
+    <script src="/resources/js/lib/jquery.min.js"></script>
 </head>
 
 <body>

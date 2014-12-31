@@ -62,4 +62,10 @@ public class View {
 	/** 取消訂單頁面 */
 	public static final String ORDER_CANCEL = "order/cancel";
 
+	/** 訂單列表 */
+	public static final String ORDER_LIST = "order/list";
+
+	/** 訂單資訊 */
+	public static final String ORDER_DETAIL = "order/detail";
+
 }

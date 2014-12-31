@@ -1,5 +1,7 @@
 package com.roy.buy.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -63,6 +65,16 @@ public class OrderService implements IOrderService {
 		Order order = orderDao.findById(orderId);
 		order.setState(BuyConstant.ORDER_STATE_CANCEL);
 		orderDao.update(order);
+	}
+
+	@Override
+	public List<Order> getOrderList() {
+		return orderDao.findAll();
+	}
+
+	@Override
+	public Order getOrderDetail(int orderId) {
+		return orderDao.findById(orderId);
 	}
 
 }
