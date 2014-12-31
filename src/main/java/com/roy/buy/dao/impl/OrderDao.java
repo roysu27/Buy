@@ -12,4 +12,10 @@ public class OrderDao extends BaseDao<Order> implements IOrderDao {
 		super(Order.class);
 	}
 
+	@Override
+	public void update(Order order) {
+		super.getSession().update(order);
+		super.getSession().flush();
+	}
+
 }

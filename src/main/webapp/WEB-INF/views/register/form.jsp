@@ -27,7 +27,7 @@
 				</c:forEach>
 			</div>
 		</c:if>
-	    <input type="submit" value="註冊" class="btn btn-large btn-primary">
+	    <input type="submit" value="註冊" class="btn btn-large btn-block btn-primary">
 	</form:form>
 
 </body>

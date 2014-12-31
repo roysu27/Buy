@@ -3,6 +3,7 @@ package com.roy.buy.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.roy.buy.constant.BuyConstant;
 import com.roy.buy.dao.IOrderDao;
 import com.roy.buy.entity.Order;
 import com.roy.buy.service.ICartService;
@@ -48,6 +49,20 @@ public class OrderService implements IOrderService {
 		// 刪除購物車內容
 		cartService.deleteProduct(userId);
 		return order;
+	}
+
+	@Override
+	public void confirmOrder(int orderId) {
+		Order order = orderDao.findById(orderId);
+		order.setState(BuyConstant.ORDER_STATE_CONFIRM);
+		orderDao.update(order);
+	}
+
+	@Override
+	public void cancelOrder(int orderId) {
+		Order order = orderDao.findById(orderId);
+		order.setState(BuyConstant.ORDER_STATE_CANCEL);
+		orderDao.update(order);
 	}
 
 }

@@ -56,4 +56,10 @@ public class View {
 	/** 商品修改頁面 */
 	public static final String ADMIN_UPDATE_PRODUCT = "admin/updateProduct";
 
+	/** 確認訂單頁面 */
+	public static final String ORDER_CONFIRM = "order/confirm";
+
+	/** 取消訂單頁面 */
+	public static final String ORDER_CANCEL = "order/cancel";
+
 }

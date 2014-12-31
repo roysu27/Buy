@@ -16,5 +16,17 @@ public interface IOrderService {
 	 * @return 訂單
 	 */
 	public Order createOrder(int userId, int[] productIdArray);
+	
+	/**
+	 * 確認訂單
+	 * @param orderId
+	 */
+	public void confirmOrder(int orderId);
+	
+	/**
+	 * 取消訂單
+	 * @param orderId
+	 */
+	public void cancelOrder(int orderId);
 
 }

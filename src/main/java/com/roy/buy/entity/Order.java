@@ -38,17 +38,22 @@ public class Order implements Serializable {
 	
 	/**
 	 * 訂單狀態
-	 * 0 = 訂單成立
-	 * 1 = 收到訂單
+	 * 0 = 建立
+	 * 1 = 確認
 	 * 2 = 撿貨
 	 * 3 = 理貨
 	 * 4 = 出貨
 	 * 5 = 送達
+	 * 6 = 取消
 	 */
 	private int state;
 	
 	/** 訂單成立時間 */
 	private Timestamp createTime;
+	
+	public Order() {
+		
+	}
 	
 	public Order(int userId, int money) {
 		this.userId = userId;

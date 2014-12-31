@@ -20,6 +20,10 @@
 				<td>${order.money}</td>
 			</tr>
 		</table>
+		<p class="text-center">
+			<a href="/Order/Confirm/${order.id}" class="btn btn-primary">確認訂單</a>
+			<a href="/Order/Cancel/${order.id}" class="btn btn-primary">取消訂單</a>
+		</p>
 	</div>
 
 </body>

@@ -30,7 +30,9 @@
 					</tr>
 				</c:forEach>
 			</table>
-			<button type="submit" class="btn btn-primary">購買</button>
+			<p class="text-center">
+				<button type="submit" class="btn btn-primary">購買</button>
+			</p>
 		</form>
 	</div>
 	
