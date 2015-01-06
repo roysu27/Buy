@@ -1,5 +1,7 @@
 package com.roy.buy.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -7,8 +9,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.roy.buy.constant.BuyConstant;
 import com.roy.buy.constant.View;
 import com.roy.buy.entity.Category;
+import com.roy.buy.entity.Order;
 import com.roy.buy.entity.Product;
 import com.roy.buy.service.ICategoryService;
 import com.roy.buy.service.IOrderService;
@@ -166,11 +170,66 @@ public class AdminController {
 	}
 	
 	/**
+	 * 取得已出貨訂單列表
+	 */
+	@RequestMapping(value = "Order/List/Shipping")
+	public String orderListShipping(Model model) {
+		model.addAttribute("orderList", orderService.getShippingOrderList());
+		return View.ADMIN_ORDER_LIST;
+	}
+	
+	/**
 	 * 取得已送達訂單列表
 	 */
 	@RequestMapping(value = "Order/List/Complete")
 	public String orderListComplete(Model model) {
 		model.addAttribute("orderList", orderService.getCompleteOrderList());
+		return View.ADMIN_ORDER_LIST;
+	}
+	
+	/**
+	 * 取得已取消訂單列表
+	 */
+	@RequestMapping(value = "Order/List/Cancel")
+	public String orderListCancel(Model model) {
+		model.addAttribute("orderList", orderService.getCancelOrderList());
+		return View.ADMIN_ORDER_LIST;
+	}
+	
+	/**
+	 * 修改訂單狀態
+	 */
+	@RequestMapping("Order/UpdateState/{orderState}/{orderId}")
+	public String orderStateToPicking(
+			@PathVariable("orderState") String orderState, 
+			@PathVariable("orderId") int orderId, 
+			Model model) {
+		int state = 0;
+		List<Order> orderList = null;
+		switch(orderState) {
+			case "Picking":
+				state = BuyConstant.ORDER_STATE_PACKING;
+				orderList = orderService.getNewOrderList();
+				break;
+			case "Tally":
+				state = BuyConstant.ORDER_STATE_TALLY;
+				orderList = orderService.getReadyOrderList();
+				break;
+			case "Shipping":
+				state = BuyConstant.ORDER_STATE_SHIPPING;
+				orderList = orderService.getReadyOrderList();
+				break;
+			case "Arrivals":
+				state = BuyConstant.ORDER_STATE_ARRIVALS;
+				orderList = orderService.getShippingOrderList();
+				break;
+			case "Cancel":
+				state = BuyConstant.ORDER_STATE_CANCEL;
+				orderList = orderService.getNewOrderList();
+				break;
+		}
+		orderService.updateOrderState(orderId, state);
+		model.addAttribute("orderList", orderList);
 		return View.ADMIN_ORDER_LIST;
 	}
 

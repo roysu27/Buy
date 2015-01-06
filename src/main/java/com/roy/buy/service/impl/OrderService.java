@@ -109,8 +109,23 @@ public class OrderService implements IOrderService {
 	}
 
 	@Override
+	public List<Order> getShippingOrderList() {
+		return orderDao.getOrderList(BuyConstant.ORDER_STATE_SHIPPING);
+	}
+
+	@Override
 	public List<Order> getCompleteOrderList() {
 		return orderDao.getOrderList(BuyConstant.ORDER_STATE_ARRIVALS);
+	}
+
+	@Override
+	public List<Order> getCancelOrderList() {
+		return orderDao.getOrderList(BuyConstant.ORDER_STATE_CANCEL);
+	}
+
+	@Override
+	public void updateOrderState(int orderId, int orderState) {
+		orderDao.updateOrderState(orderId, orderState);
 	}
 
 }

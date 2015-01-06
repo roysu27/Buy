@@ -65,9 +65,30 @@ public interface IOrderService {
 	public List<Order> getReadyOrderList();
 	
 	/**
+	 * 取得已出貨訂單列表(狀態為出貨)
+	 * @return
+	 */
+	public List<Order> getShippingOrderList();
+	
+	/**
 	 * 取得已送達訂單列表(狀態為已送達)
 	 * @return
 	 */
 	public List<Order> getCompleteOrderList();
+	
+	/**
+	 * 取得已取消訂單列表(狀態為取消)
+	 * @return
+	 */
+	public List<Order> getCancelOrderList();
+	
+	/**
+	 * 修改訂單狀態
+	 * @param orderId
+	 * 			訂單編號
+	 * @param orderState
+	 * 			要改成什麼狀態
+	 */
+	public void updateOrderState(int orderId, int orderState);
 
 }

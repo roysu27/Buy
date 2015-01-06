@@ -26,5 +26,14 @@ public interface IOrderDao extends IBaseDao<Order> {
 	 * @return
 	 */
 	public List<Order> getOrderList(List<Integer> orderStateList);
+	
+	/**
+	 * 修改訂單狀態
+	 * @param orderId
+	 * 			訂單編號
+	 * @param orderState
+	 * 			要改成什麼狀態
+	 */
+	public void updateOrderState(int orderId, int orderState);
 
 }
