@@ -68,4 +68,7 @@ public class View {
 	/** 訂單資訊 */
 	public static final String ORDER_DETAIL = "order/detail";
 
+	/** 管理後台訂單列表 */
+	public static final String ADMIN_ORDER_LIST = "admin/orderList";
+
 }

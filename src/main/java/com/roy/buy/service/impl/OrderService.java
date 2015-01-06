@@ -95,4 +95,22 @@ public class OrderService implements IOrderService {
 		return productService.getProductListByIdList(productIdList);
 	}
 
+	@Override
+	public List<Order> getNewOrderList() {
+		return orderDao.getOrderList(BuyConstant.ORDER_STATE_CONFIRM);
+	}
+
+	@Override
+	public List<Order> getReadyOrderList() {
+		List<Integer> orderStateList = new ArrayList<>();
+		orderStateList.add(BuyConstant.ORDER_STATE_PACKING);
+		orderStateList.add(BuyConstant.ORDER_STATE_TALLY);
+		return orderDao.getOrderList(orderStateList);
+	}
+
+	@Override
+	public List<Order> getCompleteOrderList() {
+		return orderDao.getOrderList(BuyConstant.ORDER_STATE_ARRIVALS);
+	}
+
 }

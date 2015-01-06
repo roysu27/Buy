@@ -51,5 +51,23 @@ public interface IOrderService {
 	 * @return
 	 */
 	public List<Product> getProductList(int orderId);
+	
+	/**
+	 * 取得新訂單列表(狀態為確認)
+	 * @return
+	 */
+	public List<Order> getNewOrderList();
+	
+	/**
+	 * 取得準備中訂單列表(狀態為撿貨或理貨)
+	 * @return
+	 */
+	public List<Order> getReadyOrderList();
+	
+	/**
+	 * 取得已送達訂單列表(狀態為已送達)
+	 * @return
+	 */
+	public List<Order> getCompleteOrderList();
 
 }

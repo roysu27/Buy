@@ -11,6 +11,7 @@ import com.roy.buy.constant.View;
 import com.roy.buy.entity.Category;
 import com.roy.buy.entity.Product;
 import com.roy.buy.service.ICategoryService;
+import com.roy.buy.service.IOrderService;
 import com.roy.buy.service.IProductService;
 
 /**
@@ -31,6 +32,12 @@ public class AdminController {
 	 */
 	@Autowired
 	private IProductService productService;
+
+	/**
+	 * 自動注入訂單Service
+	 */
+	@Autowired
+	private IOrderService orderService;
 	
 	/**
 	 * 管理後台首頁
@@ -138,6 +145,33 @@ public class AdminController {
 	@ResponseBody
 	public Object getProduct(@PathVariable("productId") int productId) {
 		return productService.getProductDetail(productId);
+	}
+	
+	/**
+	 * 取得新訂單列表
+	 */
+	@RequestMapping(value = "Order/List/New")
+	public String orderListNew(Model model) {
+		model.addAttribute("orderList", orderService.getNewOrderList());
+		return View.ADMIN_ORDER_LIST;
+	}
+	
+	/**
+	 * 取得準備中訂單列表
+	 */
+	@RequestMapping(value = "Order/List/Ready")
+	public String orderListReady(Model model) {
+		model.addAttribute("orderList", orderService.getReadyOrderList());
+		return View.ADMIN_ORDER_LIST;
+	}
+	
+	/**
+	 * 取得已送達訂單列表
+	 */
+	@RequestMapping(value = "Order/List/Complete")
+	public String orderListComplete(Model model) {
+		model.addAttribute("orderList", orderService.getCompleteOrderList());
+		return View.ADMIN_ORDER_LIST;
 	}
 
 }
