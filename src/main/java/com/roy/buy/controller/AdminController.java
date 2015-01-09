@@ -204,32 +204,28 @@ public class AdminController {
 			@PathVariable("orderState") String orderState, 
 			@PathVariable("orderId") int orderId, 
 			Model model) {
-		int state = 0;
-		List<Order> orderList = null;
 		switch(orderState) {
 			case "Picking":
-				state = BuyConstant.ORDER_STATE_PACKING;
-				orderList = orderService.getNewOrderList();
+				orderService.updateOrderState(orderId, BuyConstant.ORDER_STATE_PACKING);
+				model.addAttribute("orderList", orderService.getNewOrderList());
 				break;
 			case "Tally":
-				state = BuyConstant.ORDER_STATE_TALLY;
-				orderList = orderService.getReadyOrderList();
+				orderService.updateOrderState(orderId, BuyConstant.ORDER_STATE_TALLY);
+				model.addAttribute("orderList", orderService.getReadyOrderList());
 				break;
 			case "Shipping":
-				state = BuyConstant.ORDER_STATE_SHIPPING;
-				orderList = orderService.getReadyOrderList();
+				orderService.updateOrderState(orderId, BuyConstant.ORDER_STATE_SHIPPING);
+				model.addAttribute("orderList", orderService.getReadyOrderList());
 				break;
 			case "Arrivals":
-				state = BuyConstant.ORDER_STATE_ARRIVALS;
-				orderList = orderService.getShippingOrderList();
+				orderService.updateOrderState(orderId, BuyConstant.ORDER_STATE_ARRIVALS);
+				model.addAttribute("orderList", orderService.getShippingOrderList());
 				break;
 			case "Cancel":
-				state = BuyConstant.ORDER_STATE_CANCEL;
-				orderList = orderService.getNewOrderList();
+				orderService.updateOrderState(orderId, BuyConstant.ORDER_STATE_CANCEL);
+				model.addAttribute("orderList", orderService.getNewOrderList());
 				break;
 		}
-		orderService.updateOrderState(orderId, state);
-		model.addAttribute("orderList", orderList);
 		return View.ADMIN_ORDER_LIST;
 	}
 
