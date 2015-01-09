@@ -84,6 +84,8 @@ $(document).ready(function() {
 			success: function(data) {
 				$('#productName').val(data['name']);
 				$('#price').val(data['price']);
+				$('#reserve').val(data['reserve']);
+				$('#off').val(data['off']);
 			},
 			error: function() {
 				alert('伺服器錯誤');

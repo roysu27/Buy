@@ -1,7 +1,5 @@
 package com.roy.buy.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,8 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.roy.buy.constant.BuyConstant;
 import com.roy.buy.constant.View;
 import com.roy.buy.entity.Category;
-import com.roy.buy.entity.Order;
-import com.roy.buy.entity.Product;
+import com.roy.buy.form.ProductForm;
 import com.roy.buy.service.ICategoryService;
 import com.roy.buy.service.IOrderService;
 import com.roy.buy.service.IProductService;
@@ -108,8 +105,8 @@ public class AdminController {
 	 * 建立商品
 	 */
 	@RequestMapping(value = "SaveProduct")
-	public String saveProduct(int childCategory, String productName, int price) {
-		productService.createProduct(new Product(childCategory, productName, price));;
+	public String saveProduct(ProductForm form) {
+		productService.createProduct(form.toProduct());;
 		return View.ADMIN_HOME;
 	}
 	
@@ -135,10 +132,8 @@ public class AdminController {
 	 * 修改商品
 	 */
 	@RequestMapping(value = "UpdateProduct")
-	public String updateProduct(int productId, int childCategory, String productName, int price) {
-		Product product = new Product(childCategory, productName, price);
-		product.setId(productId);
-		productService.updateProduct(product);;
+	public String updateProduct(ProductForm form) {
+		productService.updateProduct(form.toUpdateProduct());;
 		return View.ADMIN_HOME;
 	}
 	

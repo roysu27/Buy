@@ -26,17 +26,36 @@ public class Product implements Serializable {
 	/** 商品名稱 */
 	private String name;
 	
-	/** 價格 */
+	/** 定價 */
 	private int price;
+	
+	/** 庫存 */
+	private int reserve;
+	
+	/**
+	 * 折扣, 例：八折=80, 八五折=85
+	 */
+	private int off;
 	
 	public Product() {
 		
 	}
 	
-	public Product(int category, String name, int price) {
+	public Product(int category, String name, int price, int reserve, int off) {
 		this.category = category;
 		this.name = name;
 		this.price = price;
+		this.reserve = reserve;
+		this.off = off;
+	}
+	
+	public Product(int id, int category, String name, int price, int reserve, int off) {
+		this.id = id;
+		this.category = category;
+		this.name = name;
+		this.price = price;
+		this.reserve = reserve;
+		this.off = off;
 	}
 
 	public int getId() {
@@ -69,6 +88,22 @@ public class Product implements Serializable {
 
 	public void setPrice(int price) {
 		this.price = price;
+	}
+
+	public int getReserve() {
+		return reserve;
+	}
+
+	public void setReserve(int reserve) {
+		this.reserve = reserve;
+	}
+
+	public int getOff() {
+		return off;
+	}
+
+	public void setOff(int off) {
+		this.off = off;
 	}
 
 }
