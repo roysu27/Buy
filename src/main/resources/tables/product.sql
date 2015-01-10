@@ -5,5 +5,7 @@ CREATE TABLE `product` (
   `category` int(11) NOT NULL,
   `name` varchar(50) NOT NULL DEFAULT '',
   `price` int(11) DEFAULT '0',
+  `reserve` int(11) DEFAULT '0',
+  `off` int(11) DEFAULT '100',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
