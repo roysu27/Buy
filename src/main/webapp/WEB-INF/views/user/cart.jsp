@@ -29,7 +29,7 @@
 					<tr>
 						<td>${product.id}</td>
 						<td><a href="/Product/Detail/${product.id}">${product.name}</a></td>
-						<td>${product.price}</td>
+						<td>${product.discountsPrice}</td>
 						<td><a href="/User/Cart/Delete/${product.id}">移除</a></td>
 					</tr>
 				</c:forEach>

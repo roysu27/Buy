@@ -46,11 +46,9 @@ public class ProductService implements IProductService {
 			productIdList.add(new Integer(id));
 		}
 		List<Product> productList = productDao.findProductListByProductIdList(productIdList);
-		int result = 0;
-		for(Product product : productList) {
-			result += product.getPrice();
-		}
-		return result;
+		return productList.stream()
+				.mapToInt(Product::getDiscountsPrice)
+				.sum();
 	}
 
 	@Override

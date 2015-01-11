@@ -57,6 +57,13 @@ public class Product implements Serializable {
 		this.reserve = reserve;
 		this.off = off;
 	}
+	
+	/**
+	 * 取得打折後的售價
+	 */
+	public int getDiscountsPrice() {
+		return price * off / 100;
+	}
 
 	public int getId() {
 		return id;
