@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -47,6 +48,43 @@
 			</tr>
 		</c:forEach>
 	</table>
+	
+	<fmt:parseNumber var="totalPage" type="number" value="${(orderTotal + 9) / 10}"/>
+	<c:set var="locationPage" value="${requestScope.locationPage}"/>
+	
+	共有${orderTotal}筆訂單資料。<br>
+	第${locationPage}頁/共${totalPage}頁
+	
+	<div class="pagination">
+		<ul>
+			<c:choose>
+				<c:when test="${locationPage - 1 == 0}">
+					<li class="disabled"><a>«</a></li>
+				</c:when>
+				<c:otherwise>
+					<li><a href="/Order/List/${page - 1}">«</a></li>
+				</c:otherwise>
+			</c:choose>
+			<c:forEach var="page" begin="1" end="${(orderTotal + 9) / 10}">
+				<c:choose>
+					<c:when test="${page == locationPage}">
+						<li class="active"><a>${page}</a></li>
+					</c:when>
+					<c:otherwise>
+						<li><a href="/Order/List/${page}">${page}</a></li>
+					</c:otherwise>
+				</c:choose>
+			</c:forEach>
+			<c:choose>
+				<c:when test="${locationPage == totalPage}">
+					<li class="disabled"><a>»</a></li>
+				</c:when>
+				<c:otherwise>
+					<li><a href="/Order/List/${page + 1}">»</a></li>
+				</c:otherwise>
+			</c:choose>
+		</ul>
+	</div>
 
 </body>
 </html>

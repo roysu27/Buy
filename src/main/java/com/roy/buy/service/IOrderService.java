@@ -39,6 +39,24 @@ public interface IOrderService {
 	public List<Order> getOrderList();
 	
 	/**
+	 * 取得分頁訂單列表
+	 * @param page
+	 * 			頁數
+	 * @param size
+	 * 			一頁幾筆
+	 * @return
+	 */
+	public List<Order> getOrderList(int page, int size);
+	
+	/**
+	 * 取得訂單筆數
+	 * @param userId
+	 * 			會員編號
+	 * @return
+	 */
+	public int getOrderTotal(int userId);
+	
+	/**
 	 * 取得訂單資訊
 	 * @param orderId
 	 * @return

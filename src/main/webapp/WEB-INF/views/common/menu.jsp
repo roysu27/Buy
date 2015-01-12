@@ -34,7 +34,7 @@
 		                            <li><a href="/User/ChangePassword/Form">修改密碼</a></li>
 		                        </ul>
 		                    </li>
-		                    <li><a href="/Order/List">訂單管理</a></li>
+		                    <li><a href="/Order/List/1">訂單管理</a></li>
 		                    <li><a href="/User/Cart/List">購物車</a></li>
                 		</c:when>
                 		<c:otherwise>

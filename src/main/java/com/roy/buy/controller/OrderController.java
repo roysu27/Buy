@@ -1,5 +1,7 @@
 package com.roy.buy.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -7,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.roy.buy.constant.View;
+import com.roy.buy.entity.User;
 import com.roy.buy.service.IOrderService;
 
 /**
@@ -43,9 +46,13 @@ public class OrderController {
 	/**
 	 * 訂單列表
 	 */
-	@RequestMapping("List")
-	public String list(Model model) {
-		model.addAttribute("orderList", orderService.getOrderList());
+	@RequestMapping("List/{page}")
+	public String list(Model model, @PathVariable("page") int page, HttpSession session) {
+		User user = (User) session.getAttribute("validUser");
+		int userId = user.getId();
+		model.addAttribute("orderList", orderService.getOrderList(page, 10));
+		model.addAttribute("orderTotal", orderService.getOrderTotal(userId));
+		model.addAttribute("locationPage", page);
 		return View.ORDER_LIST;
 	}
 	

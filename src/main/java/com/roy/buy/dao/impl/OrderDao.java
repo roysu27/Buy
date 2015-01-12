@@ -2,6 +2,7 @@ package com.roy.buy.dao.impl;
 
 import java.util.List;
 
+import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.springframework.stereotype.Repository;
 
@@ -38,6 +39,23 @@ public class OrderDao extends BaseDao<Order> implements IOrderDao {
 		query.setInteger("state", orderState);
 		query.setInteger("orderId", orderId);
 		query.executeUpdate();
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Order> findOrderList(int begin, int size) {
+        Criteria criteria = getSession().createCriteria(Order.class);
+        criteria.setFirstResult(begin);
+        criteria.setMaxResults(size);
+        return criteria.list();
+	}
+
+	@Override
+	public int findOrderCount(int userId) {
+		String hql = "SELECT COUNT(id) FROM Order WHERE userId = :userId";
+		Query query = super.getSession().createQuery(hql);
+		query.setInteger("userId", userId);
+		return Integer.valueOf(query.uniqueResult().toString());
 	}
 
 }

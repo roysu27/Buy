@@ -128,4 +128,15 @@ public class OrderService implements IOrderService {
 		orderDao.updateOrderState(orderId, orderState);
 	}
 
+	@Override
+	public List<Order> getOrderList(int page, int size) {
+		int begin = (page - 1) * size;
+		return orderDao.findOrderList(begin, size);
+	}
+
+	@Override
+	public int getOrderTotal(int userId) {
+		return orderDao.findOrderCount(userId);
+	}
+
 }
