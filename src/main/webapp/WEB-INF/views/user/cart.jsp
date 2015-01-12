@@ -17,6 +17,7 @@
 	
 	<div>
 		<form action="/User/Buy" method="POST">
+			<input type="hidden" name="rToken" value="${requestScope.rToken}">
 			<table class="table table-bordered table-hover">
 				<tr>
 					<th>商品編號</th>

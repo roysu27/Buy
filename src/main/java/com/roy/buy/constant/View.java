@@ -71,4 +71,7 @@ public class View {
 	/** 管理後台訂單列表 */
 	public static final String ADMIN_ORDER_LIST = "admin/orderList";
 
+	/** 禁止重覆提交頁面 */
+	public static final String ERROR_RESUBMIT = "error/resubmit";
+
 }

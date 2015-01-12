@@ -86,6 +86,7 @@ public class UserController {
 	 */
 	@RequestMapping("Cart/List")
 	public String cartList(HttpSession session, Model model) {
+		setToken(session, model);
 		User user = (User) session.getAttribute("validUser");
 		model.addAttribute("productList", cartService.getCartList(user.getId()));
 		return View.USER_CART;
@@ -96,6 +97,7 @@ public class UserController {
 	 */
 	@RequestMapping("Cart/Add/{productId}")
 	public String cartAdd(HttpSession session, @PathVariable("productId") int productId, Model model) {
+		setToken(session, model);
 		User user = (User) session.getAttribute("validUser");
 		int userId = user.getId();
 		cartService.addProduct(userId, productId);
@@ -108,6 +110,7 @@ public class UserController {
 	 */
 	@RequestMapping("Cart/Delete/{productId}")
 	public String cartDelete(HttpSession session, @PathVariable("productId") int productId, Model model) {
+		setToken(session, model);
 		User user = (User) session.getAttribute("validUser");
 		int userId = user.getId();
 		cartService.deleteProduct(userId, productId);
@@ -116,10 +119,27 @@ public class UserController {
 	}
 	
 	/**
+	 * 防止重覆提交表單, 使用Token
+	 */
+	private void setToken(HttpSession session, Model model) {
+		long token = System.currentTimeMillis();
+		session.setAttribute("sToken", token);
+		model.addAttribute("rToken", token);
+	}
+	
+	/**
 	 * 購買商品
 	 */
 	@RequestMapping("Buy")
-	public String buy(HttpSession session, int[] productIdArray, Model model) {
+	public String buy(HttpSession session, int[] productIdArray, Model model, long rToken) {
+		// 禁止重覆提交表單
+		long sToken = session.getAttribute("sToken") == null ?
+				0 : (Long) session.getAttribute("sToken");
+		if(sToken != rToken) {
+			return View.ERROR_RESUBMIT;
+		}
+		session.removeAttribute("sToken");
+		
 		User user = (User) session.getAttribute("validUser");
 		model.addAttribute("order", orderService.createOrder(user.getId(), productIdArray));
 		return View.ORDER_CREATE;
