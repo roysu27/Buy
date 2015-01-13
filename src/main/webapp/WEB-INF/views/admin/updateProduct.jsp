@@ -29,7 +29,7 @@
 	    <input type="text" name="productName" id="productName" placeholder="商品名稱"><br>
 	    <input type="text" name="price" id="price" placeholder="商品定價"><br>
 	    <input type="text" name="off" id="off" placeholder="商品折扣">
-		<span class="help-block">填折扣%數。例：85折為85，8折為80。</span>
+		<span class="help-inline">填折扣%數。例：85折為85，8折為80。</span><br>
 	    <input type="text" name="reserve" id="reserve" placeholder="庫存量"><br>
 	    <button type="submit" class="btn btn-primary">送出</button>
 	</form>
