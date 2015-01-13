@@ -37,14 +37,14 @@ public interface IOrderDao extends IBaseDao<Order> {
 	public void updateOrderState(int orderId, int orderState);
 	
 	/**
-	 * 分頁用, 查詢某個區間的訂單
+	 * 分頁用, 查詢會員某個區間的訂單
 	 * @param begin
 	 * 			開始位置
 	 * @param size
 	 * 			查詢筆數
 	 * @return
 	 */
-	public List<Order> findOrderList(int begin, int size);
+	public List<Order> findOrderList(int userId, int begin, int size);
 	
 	/**
 	 * 取得訂單筆數

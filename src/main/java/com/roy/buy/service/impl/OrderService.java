@@ -129,9 +129,9 @@ public class OrderService implements IOrderService {
 	}
 
 	@Override
-	public List<Order> getOrderList(int page, int size) {
+	public List<Order> getOrderList(int userId, int page, int size) {
 		int begin = (page - 1) * size;
-		return orderDao.findOrderList(begin, size);
+		return orderDao.findOrderList(userId, begin, size);
 	}
 
 	@Override

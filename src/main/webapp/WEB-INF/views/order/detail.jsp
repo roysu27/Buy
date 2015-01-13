@@ -32,7 +32,7 @@
 				<tr>
 					<td>${product.id}</td>
 					<td>${product.name}</td>
-					<td>${product.price}</td>
+					<td>${product.discountsPrice}</td>
 				</tr>
 			</c:forEach>
 		</table>

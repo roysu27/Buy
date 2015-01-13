@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.hibernate.Criteria;
 import org.hibernate.Query;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 import com.roy.buy.dao.IOrderDao;
@@ -43,8 +44,9 @@ public class OrderDao extends BaseDao<Order> implements IOrderDao {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Order> findOrderList(int begin, int size) {
-        Criteria criteria = getSession().createCriteria(Order.class);
+	public List<Order> findOrderList(int userId, int begin, int size) {
+        Criteria criteria = getSession().createCriteria(Order.class);  
+        criteria.add(Restrictions.in("userId", new Object[]{userId}));
         criteria.setFirstResult(begin);
         criteria.setMaxResults(size);
         return criteria.list();

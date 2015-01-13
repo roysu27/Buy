@@ -49,7 +49,7 @@
 		</c:forEach>
 	</table>
 	
-	<fmt:parseNumber var="totalPage" type="number" value="${(orderTotal + 9) / 10}"/>
+	<fmt:parseNumber var="totalPage" type="number" integerOnly="true" value="${orderTotal == 0 ? 1 : (orderTotal + 9) / 10}"/>
 	<c:set var="locationPage" value="${requestScope.locationPage}"/>
 	
 	共有${orderTotal}筆訂單資料。<br>

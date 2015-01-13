@@ -39,14 +39,14 @@ public interface IOrderService {
 	public List<Order> getOrderList();
 	
 	/**
-	 * 取得分頁訂單列表
+	 * 取得會員個人分頁訂單列表
 	 * @param page
 	 * 			頁數
 	 * @param size
 	 * 			一頁幾筆
 	 * @return
 	 */
-	public List<Order> getOrderList(int page, int size);
+	public List<Order> getOrderList(int userId, int page, int size);
 	
 	/**
 	 * 取得訂單筆數

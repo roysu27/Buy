@@ -44,13 +44,13 @@ public class OrderController {
 	}
 	
 	/**
-	 * 訂單列表
+	 * 個人訂單列表
 	 */
 	@RequestMapping("List/{page}")
 	public String list(Model model, @PathVariable("page") int page, HttpSession session) {
 		User user = (User) session.getAttribute("validUser");
 		int userId = user.getId();
-		model.addAttribute("orderList", orderService.getOrderList(page, 10));
+		model.addAttribute("orderList", orderService.getOrderList(userId, page, 10));
 		model.addAttribute("orderTotal", orderService.getOrderTotal(userId));
 		model.addAttribute("locationPage", page);
 		return View.ORDER_LIST;
