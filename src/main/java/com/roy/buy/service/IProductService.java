@@ -1,6 +1,9 @@
 package com.roy.buy.service;
 
+import java.io.IOException;
 import java.util.List;
+
+import org.springframework.web.multipart.MultipartFile;
 
 import com.roy.buy.entity.Product;
 
@@ -54,5 +57,16 @@ public interface IProductService {
 	 * @return
 	 */
 	public List<Product> getProductListByIdList(List<Integer> idList);
+	
+	/**
+	 * 新增商品圖片
+	 * @param id
+	 * 			商品編號
+	 * @param image
+	 * 			商品圖片
+	 * @param webappRootPath
+	 * 			網站根目錄
+	 */
+	public void addProductImage(int id, MultipartFile image, String webappRootPath) throws IOException;
 
 }

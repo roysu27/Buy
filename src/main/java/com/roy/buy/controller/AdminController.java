@@ -1,11 +1,17 @@
 package com.roy.buy.controller;
 
+import java.io.IOException;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.roy.buy.constant.BuyConstant;
 import com.roy.buy.constant.View;
@@ -134,6 +140,32 @@ public class AdminController {
 	@RequestMapping(value = "UpdateProduct")
 	public String updateProduct(ProductForm form) {
 		productService.updateProduct(form.toUpdateProduct());;
+		return View.ADMIN_HOME;
+	}
+	
+	/**
+	 * 新增商品圖片頁面
+	 */
+	@RequestMapping(value = "AddProductImage")
+	public String addProductImage(Model model) {
+		model.addAttribute("parentCategoryList", categoryService.getParentCategoryList());
+		return View.ADMIN_ADD_PRODUCT_IMAGE;
+	}
+	
+	/**
+	 * 儲存商品圖片
+	 */
+	@RequestMapping(value = "SaveProductImage")
+	public String saveProductImage(@RequestParam("productId") int productId, 
+			@RequestParam("file") MultipartFile file,
+			HttpServletRequest request) {
+		String webappRootPath = request.getSession().getServletContext().getRealPath("/");
+		try {
+			productService.addProductImage(productId, file, webappRootPath);
+		}
+		catch(IOException e) {
+			e.printStackTrace();
+		}
 		return View.ADMIN_HOME;
 	}
 	

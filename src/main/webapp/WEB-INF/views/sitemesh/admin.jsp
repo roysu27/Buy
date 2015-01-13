@@ -29,6 +29,7 @@
                         <li><a href="/Admin/CreateParentCategory">新增父類別</a></li>
                         <li><a href="/Admin/CreateChildCategory">新增子類別</a></li>
                         <li><a href="/Admin/CreateProduct">新增商品</a></li>
+                        <li><a href="/Admin/AddProductImage">新增商品圖片</a></li>
                         <li><a href="/Admin/UpdateProductPage">修改商品</a></li>
                         <li class="nav-header">訂單管理</li>
                         <li><a href="/Admin/Order/List/New">新訂單</a></li>

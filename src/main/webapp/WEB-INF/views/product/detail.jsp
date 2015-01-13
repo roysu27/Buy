@@ -11,7 +11,11 @@
 
 <body>
 
-	<div class="span8 offset2">
+	<div class="span3">
+		<img src="${product.imageUrl}" alt="${product.name}" class="img-rounded text-center">
+	</div>
+
+	<div class="span9">
 		<table class="table table-bordered">
 			<tr>
 				<th class="span2">商品編號</th>

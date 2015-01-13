@@ -7,5 +7,6 @@ CREATE TABLE `product` (
   `price` int(11) DEFAULT '0',
   `reserve` int(11) DEFAULT '0',
   `off` int(11) DEFAULT '100',
+  `imageUrl` varchar(50) DEFAULT '',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

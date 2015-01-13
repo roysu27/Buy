@@ -37,6 +37,9 @@ public class Product implements Serializable {
 	 */
 	private int off;
 	
+	/** 圖片網址 */
+	private String imageUrl;
+	
 	public Product() {
 		
 	}
@@ -111,6 +114,14 @@ public class Product implements Serializable {
 
 	public void setOff(int off) {
 		this.off = off;
+	}
+
+	public String getImageUrl() {
+		return imageUrl;
+	}
+
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
 	}
 
 }

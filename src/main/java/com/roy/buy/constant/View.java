@@ -74,4 +74,7 @@ public class View {
 	/** 禁止重覆提交頁面 */
 	public static final String ERROR_RESUBMIT = "error/resubmit";
 
+	/** 新增商品圖片頁面 */
+	public static final String ADMIN_ADD_PRODUCT_IMAGE = "admin/addProductImage";
+
 }
