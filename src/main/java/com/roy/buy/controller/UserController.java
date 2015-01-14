@@ -2,6 +2,7 @@ package com.roy.buy.controller;
 
 import java.util.Arrays;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -96,12 +97,18 @@ public class UserController {
 	 * 購物車加入商品
 	 */
 	@RequestMapping("Cart/Add/{productId}")
-	public String cartAdd(HttpSession session, @PathVariable("productId") int productId, Model model) {
+	public String cartAdd(@PathVariable("productId") int productId, 
+			HttpServletRequest request, 
+			HttpSession session, 
+			Model model) {
 		setToken(session, model);
 		User user = (User) session.getAttribute("validUser");
 		int userId = user.getId();
 		cartService.addProduct(userId, productId);
 		model.addAttribute("productList", cartService.getCartList(userId));
+		
+		// 側邊欄購物車
+		request.setAttribute("cartList", cartService.getCartList(user.getId()));
 		return View.USER_CART;
 	}
 	
@@ -109,12 +116,18 @@ public class UserController {
 	 * 購物車移除商品
 	 */
 	@RequestMapping("Cart/Delete/{productId}")
-	public String cartDelete(HttpSession session, @PathVariable("productId") int productId, Model model) {
+	public String cartDelete(@PathVariable("productId") int productId, 
+			HttpServletRequest request, 
+			HttpSession session, 
+			Model model) {
 		setToken(session, model);
 		User user = (User) session.getAttribute("validUser");
 		int userId = user.getId();
 		cartService.deleteProduct(userId, productId);
 		model.addAttribute("productList", cartService.getCartList(userId));
+		
+		// 側邊欄購物車
+		request.setAttribute("cartList", cartService.getCartList(user.getId()));
 		return View.USER_CART;
 	}
 	

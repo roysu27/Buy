@@ -42,6 +42,22 @@
             	<decorator:body/>
             </div>
             
+            <div class="span2">
+				<p class="text-center">購物車</p>
+				<table class="table table-striped">
+					<c:choose>
+						<c:when test="${empty cartList}">
+							<tr><td><span class="text-center">購物車無商品。</span></td></tr>
+						</c:when>
+						<c:otherwise>
+							<c:forEach var="product" items="${cartList}">
+								<tr><td>${product.name}</td></tr>
+							</c:forEach>
+						</c:otherwise>
+					</c:choose>
+				</table>
+            </div>
+            
         </div>
 
         <hr>

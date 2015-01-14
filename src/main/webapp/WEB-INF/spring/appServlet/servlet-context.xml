@@ -27,7 +27,7 @@
 	<!-- 攔截器 -->
 	<mvc:interceptors>
 		<mvc:interceptor>
-			<mvc:mapping path="/*"/>
+			<mvc:mapping path="/**"/>
 			<beans:bean class="com.roy.buy.interceptor.SidebarInterceptor"/>
 		</mvc:interceptor>
 	</mvc:interceptors>
