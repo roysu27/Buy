@@ -255,5 +255,14 @@ public class AdminController {
 		}
 		return View.ADMIN_ORDER_LIST;
 	}
+	
+	/**
+	 * 檢視庫存頁面
+	 */
+	@RequestMapping(value = "Stock/Detail")
+	public String stockDetailPage(Model model) {
+		model.addAttribute("productList", productService.getProductList());
+		return View.ADMIN_STOCK_DETAIL;
+	}
 
 }

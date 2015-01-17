@@ -36,6 +36,7 @@ public class ProductDao extends BaseDao<Product> implements IProductDao {
 	
 	@Override
 	public void update(Product product) {
+		super.getSession().clear();
 		super.update(product);
 		super.getSession().flush();
 	}

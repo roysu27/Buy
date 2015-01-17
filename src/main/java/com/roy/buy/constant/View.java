@@ -77,4 +77,7 @@ public class View {
 	/** 新增商品圖片頁面 */
 	public static final String ADMIN_ADD_PRODUCT_IMAGE = "admin/addProductImage";
 
+	/** 檢視庫存頁面 */
+	public static final String ADMIN_STOCK_DETAIL = "admin/stockDetail";
+
 }

@@ -99,4 +99,9 @@ public class ProductService implements IProductService {
 		intputStream.close();
 	}
 
+	@Override
+	public List<Product> getProductList() {
+		return productDao.findAll();
+	}
+
 }
