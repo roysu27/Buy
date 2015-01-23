@@ -36,6 +36,7 @@
 		                    </li>
 		                    <li><a href="/Order/List/1">訂單管理</a></li>
 		                    <li><a href="/User/Cart/List">購物車</a></li>
+		                    <li><a href="/User/CommenQuestion">常見問題</a></li>
                 		</c:when>
                 		<c:otherwise>
                     		<li><a href="/Register/Form">註冊</a></li>

@@ -157,5 +157,13 @@ public class UserController {
 		model.addAttribute("order", orderService.createOrder(user.getId(), productIdArray));
 		return View.ORDER_CREATE;
 	}
+	
+	/**
+	 * 常見問題
+	 */
+	@RequestMapping("CommenQuestion")
+	public String commenQuestion() {
+		return View.USER_COMMON_QUESTION;
+	}
 
 }

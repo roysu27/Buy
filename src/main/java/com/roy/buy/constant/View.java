@@ -80,4 +80,7 @@ public class View {
 	/** 檢視庫存頁面 */
 	public static final String ADMIN_STOCK_DETAIL = "admin/stockDetail";
 
+	/** 常見問題頁面 */
+	public static final String USER_COMMON_QUESTION = "user/commonQuestion";
+
 }
