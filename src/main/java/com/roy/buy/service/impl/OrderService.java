@@ -48,13 +48,13 @@ public class OrderService implements IOrderService {
 	private IBuyRecordDao buyRecordDao;
 
 	@Override
-	public Order createOrder(int userId, int[] productIdArray) {
+	public Order createOrder(int userId, int[] productIdArray, int[] prductQuantityArray) {
 		// 新增訂單
 	    Order order = new Order(userId, productService.countProductTotal(productIdArray));
 		int orderId = orderDao.save(order);
 		order.setId(orderId);
 		// 儲存購買記錄
-		userService.saveBuyRecord(userId, productIdArray, orderId);
+		userService.saveBuyRecord(userId, productIdArray, prductQuantityArray, orderId);
 		// 刪除購物車內容
 		cartService.deleteProduct(userId);
 		return order;

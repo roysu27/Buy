@@ -14,11 +14,13 @@ public interface IOrderService {
 	 * 建立訂單
 	 * @param userId
 	 * 			會員編號
-	 * @param productId
+	 * @param productIdArray
 	 * 			商品編號陣列
+	 * @param productQuantityArray
+	 * 			商品購買數量陣列
 	 * @return 訂單
 	 */
-	public Order createOrder(int userId, int[] productIdArray);
+	public Order createOrder(int userId, int[] productIdArray, int[] productQuantityArray);
 	
 	/**
 	 * 確認訂單

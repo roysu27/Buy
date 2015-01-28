@@ -85,9 +85,9 @@ public class UserService implements IUserService {
 	}
 
 	@Override
-	public void saveBuyRecord(int userId, int[] productId, int orderId) {
-		for(int id : productId) {
-			buyRecord.save(new BuyRecord(userId, id, orderId));
+	public void saveBuyRecord(int userId, int[] productIdArray, int[] prductQuantityArray, int orderId) {
+		for (int i = 0; i < productIdArray.length; i++) {
+			buyRecord.save(new BuyRecord(userId, productIdArray[i], orderId, prductQuantityArray[i]));
 		}
 	}
 	

@@ -26,6 +26,9 @@ public class BuyRecord implements Serializable {
 	/** 商品編號 */
 	private int productId;
 	
+	/** 購買數量 */
+	private int quantity;
+	
 	/** 訂單編號 */
 	private int orderId;
 	
@@ -33,10 +36,11 @@ public class BuyRecord implements Serializable {
 		
 	}
 	
-	public BuyRecord(int userId, int productId, int orderId) {
+	public BuyRecord(int userId, int productId, int orderId, int quantity) {
 		this.userId = userId;
 		this.productId = productId;
 		this.orderId = orderId;
+		this.quantity = quantity;
 	}
 
 	public int getId() {
@@ -61,6 +65,14 @@ public class BuyRecord implements Serializable {
 
 	public void setProductId(int productId) {
 		this.productId = productId;
+	}
+
+	public int getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
 	}
 
 	public int getOrderId() {

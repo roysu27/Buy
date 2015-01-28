@@ -23,6 +23,7 @@
 					<th>商品編號</th>
 					<th>商品名稱</th>
 					<th>價格</th>
+					<th class="span2">數量</th>
 					<th>功能</th>
 				</tr>
 				<c:forEach var="product" items="${requestScope.productList}">
@@ -31,6 +32,7 @@
 						<td>${product.id}</td>
 						<td><a href="/Product/Detail/${product.id}">${product.name}</a></td>
 						<td>${product.discountsPrice}</td>
+						<td><input type="text" name="prductQuantityArray" class="span6" value="1"></td>
 						<td><a href="/User/Cart/Delete/${product.id}">移除</a></td>
 					</tr>
 				</c:forEach>

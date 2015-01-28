@@ -144,7 +144,9 @@ public class UserController {
 	 * 購買商品
 	 */
 	@RequestMapping("Buy")
-	public String buy(HttpSession session, int[] productIdArray, Model model, long rToken) {
+	public String buy(HttpSession session, 
+			int[] productIdArray, int[] prductQuantityArray, 
+			Model model, long rToken) {
 		// 禁止重覆提交表單
 		long sToken = session.getAttribute("sToken") == null ?
 				0 : (Long) session.getAttribute("sToken");
@@ -154,7 +156,7 @@ public class UserController {
 		session.removeAttribute("sToken");
 		
 		User user = (User) session.getAttribute("validUser");
-		model.addAttribute("order", orderService.createOrder(user.getId(), productIdArray));
+		model.addAttribute("order", orderService.createOrder(user.getId(), productIdArray, prductQuantityArray));
 		return View.ORDER_CREATE;
 	}
 	
