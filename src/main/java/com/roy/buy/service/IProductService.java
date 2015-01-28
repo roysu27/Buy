@@ -46,11 +46,13 @@ public interface IProductService {
 	
 	/**
 	 * 計算多樣商品總額
-	 * @param productId
+	 * @param productIdArray
 	 * 			商品編號陣列
+	 * @param prductQuantityArray
+	 * 			商品購買數量陣列
 	 * @return 商品總額
 	 */
-	public int countProductTotal(int[] productIdArray);
+	public int countProductTotal(int[] productIdArray, int[] prductQuantityArray);
 	
 	/**
 	 * 修改商品

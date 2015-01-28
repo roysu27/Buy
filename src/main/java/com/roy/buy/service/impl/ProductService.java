@@ -3,7 +3,6 @@ package com.roy.buy.service.impl;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,15 +44,13 @@ public class ProductService implements IProductService {
 	}
 
 	@Override
-	public int countProductTotal(int[] productIdArray) {
-		List<Integer> productIdList = new ArrayList<>();
-		for(int id : productIdArray) {
-			productIdList.add(new Integer(id));
+	public int countProductTotal(int[] productIdArray, int[] prductQuantityArray) {
+		int total = 0;
+		for (int i = 0; i < prductQuantityArray.length; i++) {
+			Product product = productDao.findById(productIdArray[i]);
+			total += product.getDiscountsPrice() * prductQuantityArray[i];
 		}
-		List<Product> productList = productDao.findProductListByProductIdList(productIdList);
-		return productList.stream()
-				.mapToInt(Product::getDiscountsPrice)
-				.sum();
+		return total;
 	}
 
 	@Override

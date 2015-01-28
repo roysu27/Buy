@@ -50,7 +50,7 @@ public class OrderService implements IOrderService {
 	@Override
 	public Order createOrder(int userId, int[] productIdArray, int[] prductQuantityArray) {
 		// 新增訂單
-	    Order order = new Order(userId, productService.countProductTotal(productIdArray));
+	    Order order = new Order(userId, productService.countProductTotal(productIdArray, prductQuantityArray));
 		int orderId = orderDao.save(order);
 		order.setId(orderId);
 		// 儲存購買記錄
