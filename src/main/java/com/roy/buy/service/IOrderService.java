@@ -2,8 +2,8 @@ package com.roy.buy.service;
 
 import java.util.List;
 
+import com.roy.buy.entity.BuyRecord;
 import com.roy.buy.entity.Order;
-import com.roy.buy.entity.Product;
 
 /**
  * 訂單Service
@@ -66,11 +66,11 @@ public interface IOrderService {
 	public Order getOrderDetail(int orderId);
 	
 	/**
-	 * 取得訂單產品
+	 * 取得訂單購買記錄
 	 * @param orderId
 	 * @return
 	 */
-	public List<Product> getProductList(int orderId);
+	public List<BuyRecord> getBuyRecordList(int orderId);
 	
 	/**
 	 * 取得新訂單列表(狀態為確認)

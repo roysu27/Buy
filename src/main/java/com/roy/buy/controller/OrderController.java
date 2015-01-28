@@ -62,7 +62,7 @@ public class OrderController {
 	@RequestMapping("Detail/{orderId}")
 	public String detail(@PathVariable("orderId") int orderId, Model model) {
 		model.addAttribute("order", orderService.getOrderDetail(orderId));
-		model.addAttribute("productList", orderService.getProductList(orderId));
+		model.addAttribute("buyRecordList", orderService.getBuyRecordList(orderId));
 		return View.ORDER_DETAIL;
 	}
 

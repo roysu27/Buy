@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 
 /**
  * 購買記錄
@@ -31,6 +32,10 @@ public class BuyRecord implements Serializable {
 	
 	/** 訂單編號 */
 	private int orderId;
+	
+	/** 商品 */
+	@Transient
+	private Product product;
 	
 	public BuyRecord() {
 		
@@ -81,5 +86,13 @@ public class BuyRecord implements Serializable {
 
 	public void setOrderId(int orderId) {
 		this.orderId = orderId;
+	}
+
+	public Product getProduct() {
+		return product;
+	}
+
+	public void setProduct(Product product) {
+		this.product = product;
 	}
 }

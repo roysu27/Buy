@@ -85,14 +85,14 @@ public class OrderService implements IOrderService {
 	}
 
 	@Override
-	public List<Product> getProductList(int orderId) {
+	public List<BuyRecord> getBuyRecordList(int orderId) {
 		List<BuyRecord> buyRecordList = buyRecordDao.findByOrderId(orderId);
 		// 根據購買記錄取得該訂單產品編號列表
-		List<Integer> productIdList = new ArrayList<>();
 		for(BuyRecord buyRecord : buyRecordList) {
-			productIdList.add(buyRecord.getProductId());
+			Product product = productService.getProductDetail(buyRecord.getProductId());
+			buyRecord.setProduct(product);
 		}
-		return productService.getProductListByIdList(productIdList);
+		return buyRecordList;
 	}
 
 	@Override
