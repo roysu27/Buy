@@ -5,5 +5,6 @@ CREATE TABLE `buyRecord` (
   `userId` int(11) NOT NULL,
   `productId` int(11) NOT NULL,
   `orderId` int(11) NOT NULL,
+  `quantity` int(11) DEFAULT '1',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
