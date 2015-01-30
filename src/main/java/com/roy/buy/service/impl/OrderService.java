@@ -4,7 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.orm.hibernate4.HibernateTransactionManager;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.TransactionDefinition;
+import org.springframework.transaction.TransactionStatus;
+import org.springframework.transaction.support.DefaultTransactionDefinition;
 
 import com.roy.buy.constant.BuyConstant;
 import com.roy.buy.dao.IBuyRecordDao;
@@ -47,16 +51,30 @@ public class OrderService implements IOrderService {
 	@Autowired
 	private IBuyRecordDao buyRecordDao;
 
+	@Autowired
+	private HibernateTransactionManager transactionManager;
+
 	@Override
 	public Order createOrder(int userId, int[] productIdArray, int[] prductQuantityArray) {
-		// 新增訂單
-	    Order order = new Order(userId, productService.countProductTotal(productIdArray, prductQuantityArray));
-		int orderId = orderDao.save(order);
-		order.setId(orderId);
-		// 儲存購買記錄
-		userService.saveBuyRecord(userId, productIdArray, prductQuantityArray, orderId);
-		// 刪除購物車內容
-		cartService.deleteProduct(userId);
+		DefaultTransactionDefinition definition = new DefaultTransactionDefinition();
+		definition.setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRED);
+		TransactionStatus status = transactionManager.getTransaction(definition);
+		
+		Order order;
+		try {
+			// 新增訂單
+		    order = new Order(userId, productService.countProductTotal(productIdArray, prductQuantityArray));
+			int orderId = orderDao.save(order);
+			order.setId(orderId);
+			// 儲存購買記錄
+			userService.saveBuyRecord(userId, productIdArray, prductQuantityArray, orderId);
+			// 刪除購物車內容
+			cartService.deleteProduct(userId);
+		}
+		catch(Exception e) {
+			transactionManager.rollback(status);
+			throw e;
+		}
 		return order;
 	}
 
