@@ -68,8 +68,11 @@ public class OrderService implements IOrderService {
 			order.setId(orderId);
 			// 儲存購買記錄
 			userService.saveBuyRecord(userId, productIdArray, prductQuantityArray, orderId);
+			// 扣除購買商品庫存量
+			productService.deductBuyProduct(productIdArray, prductQuantityArray);
 			// 刪除購物車內容
 			cartService.deleteProduct(userId);
+			transactionManager.commit(status);
 		}
 		catch(Exception e) {
 			transactionManager.rollback(status);

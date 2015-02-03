@@ -76,5 +76,14 @@ public interface IProductService {
 	 * 			網站根目錄
 	 */
 	public void addProductImage(int id, MultipartFile image, String webappRootPath) throws IOException;
+	
+	/**
+	 * 扣除購買商品庫存
+	 * @param productIdArray
+	 * 			商品編號陣列
+	 * @param prductQuantityArray
+	 * 			購買商品數量陣列
+	 */
+	public void deductBuyProduct(int[] productIdArray, int[] prductQuantityArray);
 
 }

@@ -101,4 +101,14 @@ public class ProductService implements IProductService {
 		return productDao.findAll();
 	}
 
+	@Override
+	public void deductBuyProduct(int[] productIdArray, int[] prductQuantityArray) {
+		for (int i = 0; i < productIdArray.length; i++) {
+			Product product = productDao.findById(productIdArray[i]);
+			int reserve = product.getReserve() - prductQuantityArray[i];
+			product.setReserve(reserve);
+			productDao.update(product);
+		}
+	}
+
 }

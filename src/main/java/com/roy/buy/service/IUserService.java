@@ -39,9 +39,14 @@ public interface IUserService {
 	/**
 	 * 儲存購買記錄
 	 * @param userId
+	 * 			會員編號
 	 * @param productIdArray
+	 * 			商品編號陣列
 	 * @param prductQuantityArray
+	 * 			購買商品數量陣列
 	 * @param orderId
+	 * 			訂單編號
 	 */
 	public void saveBuyRecord(int userId, int[] productIdArray, int[] prductQuantityArray, int orderId);
+	
 }
