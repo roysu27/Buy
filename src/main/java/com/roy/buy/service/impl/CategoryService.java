@@ -42,6 +42,10 @@ public class CategoryService implements ICategoryService {
 	public Map<Category, List<Category>> getSidebar() {
 		Map<Category, List<Category>> result = new LinkedHashMap<>();
 		Map<Integer, List<Category>> sortCategoryMap = getSortCategoryMap();
+		// 避免沒有商品類別時發生NullPointerException
+		if(sortCategoryMap.isEmpty()) {
+			return result;
+		}
 		// 跑所有父類別迴圈, 將父類別放進Map的key, 父類別下所屬子類別放進value
 		for(Category category : sortCategoryMap.get(BuyConstant.CATEGORY_ROOT)) {
 			result.put(category, sortCategoryMap.get(category.getId()));
