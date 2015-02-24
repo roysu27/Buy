@@ -35,12 +35,10 @@ public class SidebarInterceptor implements HandlerInterceptor {
 	public boolean preHandle(HttpServletRequest request,
 			HttpServletResponse response, Object handler) throws Exception {
 		// 商品類別側邊欄
-		HttpSession session = request.getSession();
-		if(session.getAttribute("sidebar") == null) {
-			session.setAttribute("sidebar", categoryService.getSidebar());
-		}
+		request.setAttribute("sidebar", categoryService.getSidebar());
 		
 		// 購物車側邊欄
+		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("validUser");
 		if(user != null) {
 			request.setAttribute("cartList", cartService.getCartList(user.getId()));

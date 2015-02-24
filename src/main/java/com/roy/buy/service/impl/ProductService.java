@@ -6,7 +6,11 @@ import java.io.InputStream;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.orm.hibernate4.HibernateTransactionManager;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.TransactionDefinition;
+import org.springframework.transaction.TransactionStatus;
+import org.springframework.transaction.support.DefaultTransactionDefinition;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.roy.buy.dao.IProductDao;
@@ -22,6 +26,9 @@ public class ProductService implements IProductService {
 	 */
 	@Autowired
 	private IProductDao productDao;
+
+	@Autowired
+	private HibernateTransactionManager transactionManager;
 
 	@Override
 	public void createProduct(Product product) {
@@ -65,17 +72,28 @@ public class ProductService implements IProductService {
 
 	@Override
 	public void addProductImage(int id, MultipartFile image, String webappRootPath) throws IOException {
-		// 新增商品圖片
-		String photoDir = webappRootPath + "/resources/image/";
-		String filename = id + Utils.getFileExtension(image.getOriginalFilename());
-		String fileNameAndPath = photoDir + filename;
-		saveFile(image.getInputStream(), fileNameAndPath);
+		DefaultTransactionDefinition definition = new DefaultTransactionDefinition();
+		definition.setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRED);
+		TransactionStatus status = transactionManager.getTransaction(definition);
 
-		// 儲存商品圖片網址
-		String imageUrl = "http://localhost:8080/resources/image/" + filename;
-		Product product = productDao.findById(id);
-		product.setImageUrl(imageUrl);
-		productDao.update(product);
+		try {
+			// 新增商品圖片
+			String photoDir = webappRootPath + "/resources/image/";
+			String filename = id + Utils.getFileExtension(image.getOriginalFilename());
+			String fileNameAndPath = photoDir + filename;
+			saveFile(image.getInputStream(), fileNameAndPath);
+	
+			// 儲存商品圖片網址
+			String imageUrl = "http://localhost:8080/resources/image/" + filename;
+			Product product = productDao.findById(id);
+			product.setImageUrl(imageUrl);
+			productDao.update(product);
+			transactionManager.commit(status);
+		}
+		catch(Exception e) {
+			transactionManager.rollback(status);
+			throw e;
+		}
 	}
 	
 	/**

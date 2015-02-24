@@ -26,7 +26,7 @@
             <div class="span2">
                 <div class="well sidebar-nav">
                     <ul class="nav nav-list">
-                    	<c:forEach var="categoryMap" items="${sessionScope.sidebar}">
+                    	<c:forEach var="categoryMap" items="${requestScope.sidebar}">
                     		<%-- 父類別 --%>
                     		<li class="nav-header">${categoryMap.key.name}</li>
 	                    	<c:forEach var="category" items="${categoryMap.value}">
